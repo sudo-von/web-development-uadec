@@ -1,5 +1,4 @@
 # Database.
-database/*
 # Frontend.
 react/node_modules
 react/build
