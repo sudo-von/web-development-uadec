@@ -1,0 +1,45 @@
+version: '3.1'
+services:
+  backend:
+    container_name: web_development_uadec_backend
+    restart: on-failure:10
+    build:
+      context: backend/.
+    volumes:
+      - ./backend:/backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+    links:
+      - database
+  database:
+    container_name: web_development_uadec_database
+    image: mysql:5.7
+    volumes:
+      - ./database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+  database_manager:
+    container_name: web_development_uadec_database_manager
+    restart: on-failure:10
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      - PMA_HOST=database
+    depends_on:
+      - database
+  frontend:
+    container_name: web_development_uadec_frontend
+    build:
+      context: frontend/.
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 80:3000
