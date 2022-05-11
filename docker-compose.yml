@@ -7,12 +7,17 @@ services:
       context: backend/.
     volumes:
       - ./backend:/backend
+    command: python manage.py runserver 0.0.0.0:5000
     ports:
       - "5000:5000"
     depends_on:
       - database
     links:
       - database
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   database:
     container_name: web_development_uadec_database
     image: mysql:5.7
