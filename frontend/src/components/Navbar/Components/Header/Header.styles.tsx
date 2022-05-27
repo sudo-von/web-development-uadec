@@ -34,6 +34,10 @@ const styles = {
     marginTop: 15,
     marginRight: 9,
   },
+  telephone: {
+    width: 20,
+    height: 24,
+  },
 } as const;
 
 export default styles;

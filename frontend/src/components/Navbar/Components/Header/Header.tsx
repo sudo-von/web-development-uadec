@@ -19,10 +19,14 @@ const Header = () => {
         </div>
       </div>
       <div style={styles.telephoneContainer}>
-        <img src="assets/header/bloque_call_now/telefono.png" alt="asas" />
+        <img
+          src="assets/header/bloque_call_now/telefono.png"
+          alt="telephone"
+          style={styles.telephone}
+        />
         <img
           src="assets/header/bloque_call_now/LLama al_ 1-800-123-4567.png"
-          alt="asas"
+          alt="call now 1-800-123-4567"
         />
       </div>
     </div>
