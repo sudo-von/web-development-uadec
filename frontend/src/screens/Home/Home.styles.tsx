@@ -2,7 +2,10 @@ const styles = {
   contentContainer: {
     width: 1002,
     height: 925,
-  } as const,
-};
+  },
+  blackLine: {
+    display: 'block',
+  },
+} as const;
 
 export default styles;
