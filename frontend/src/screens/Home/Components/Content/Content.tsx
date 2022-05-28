@@ -2,6 +2,7 @@ import Container from 'src/components/Container/Container';
 import Image from 'src/components/Image/Image';
 import styles from 'src/screens/Home/Components/Content/Content.styles';
 import Services from 'src/screens/Home/Components/Content/Components/Services/Services';
+import FrequentQuestions from 'src/screens/Home/Components/Content/Components/FrequentQuestions/FrequentQuestions';
 
 const Content = () => {
   return (
@@ -43,6 +44,7 @@ const Content = () => {
         </p>
       </Container>
       <Services />
+      <FrequentQuestions />
     </div>
   );
 };

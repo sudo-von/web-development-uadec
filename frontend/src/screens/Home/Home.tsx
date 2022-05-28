@@ -1,3 +1,4 @@
+import Image from 'src/components/Image/Image';
 import Navbar from 'src/components/Navbar/Navbar';
 import Content from 'src/screens/Home/Components/Content/Content';
 import styles from 'src/screens/Home/Home.styles';
@@ -8,6 +9,13 @@ const Home = () => {
       <Navbar />
       <div style={styles.contentContainer}>
         <Content />
+        <Image
+          alt="Black line"
+          src="assets/footer/black_line.png"
+          width={1002}
+          height={5}
+          style={styles.blackLine}
+        />
       </div>
     </div>
   );
