@@ -15,6 +15,9 @@ const styles = {
     padding: 0,
     margin: 0,
     textAlign: 'right',
+    textDecorationLine: 'underline',
+    textDecorationStyle: 'solid',
+    cursor: 'pointer',
   },
   p: {
     padding: 0,
@@ -23,9 +26,6 @@ const styles = {
     fontFamily: 'Tahoma',
     fontSize: 12,
     display: 'inline',
-    textDecorationLine: 'underline',
-    textDecorationStyle: 'solid',
-    cursor: 'pointer',
     textAlign: 'right',
   },
 } as const;
