@@ -1,7 +1,9 @@
+import Home from 'src/screens/Home/Home';
+
 function App() {
   return (
-    <div className="App">
-      Hello from react
+    <div>
+      <Home />
     </div>
   );
 }
