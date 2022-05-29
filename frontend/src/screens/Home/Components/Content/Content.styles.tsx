@@ -15,7 +15,6 @@ const styles = {
     marginRight: 14,
   },
   smallHousesContainer: {
-    marginTop: 27,
     paddingRight: 21,
     marginLeft: 26,
   },

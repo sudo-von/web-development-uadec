@@ -1,6 +1,7 @@
 import React from 'react';
 
 interface ContainerProps {
+  flexDirection?: 'row' | 'column';
   justifyContent?:
     | 'flex-start'
     | 'flex-end'
@@ -13,13 +14,22 @@ interface ContainerProps {
 }
 
 const Container = ({
+  flexDirection = 'row',
   justifyContent = 'flex-start',
   alignItems = 'flex-start',
   style = {},
   children,
 }: ContainerProps) => {
   return (
-    <div style={{ display: 'flex', justifyContent, alignItems, ...style }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection,
+        justifyContent,
+        alignItems,
+        ...style,
+      }}
+    >
       {children}
     </div>
   );

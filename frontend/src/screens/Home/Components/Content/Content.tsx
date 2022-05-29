@@ -11,7 +11,7 @@ const Content = () => {
         src="assets/bg_body_slice/boca-raton-exterior.jpg"
         alt="House wallpaper"
         width={771}
-        height={225}
+        height={255}
         style={styles.house}
       />
       <Container justifyContent="center">

@@ -5,3 +5,7 @@ body {
   justify-content: center;
   background: url('assets/background_full.jpg');
 }
+
+input::placeholder {
+  color: #5492b1;
+}
