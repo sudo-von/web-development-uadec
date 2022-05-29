@@ -8,7 +8,7 @@ const styles = (isLarge: boolean) =>
       width: isLarge ? '70%' : '100%',
     },
     button: {
-      fontSize: 14,
+      fontSize: 12,
     },
     rightMenu: {
       marginTop: isLarge ? 0 : 5,

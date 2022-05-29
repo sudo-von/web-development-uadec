@@ -1,14 +1,18 @@
 const handleStyles = (isLarge: boolean) =>
   ({
+    logoContainer: {
+      paddingTop: isLarge ? 0 : 10,
+      paddingBottom: isLarge ? 0 : 10,
+    },
     logo: {
-      marginTop: 13,
-      marginLeft: 29,
+      marginTop: isLarge ? 13 : 0,
+      marginLeft: isLarge ? 29 : 0,
     },
     multihouse: {
-      marginLeft: 18,
-      width: 377,
-      height: 23,
-      marginTop: 6,
+      marginLeft: isLarge ? 18 : 15,
+      width: isLarge ? 377 : '100%',
+      height: isLarge ? 23 : '100%',
+      marginTop: isLarge ? 6 : 0,
     },
     bestOption: {
       width: 230,

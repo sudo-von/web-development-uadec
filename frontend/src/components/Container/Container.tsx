@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ContainerProps {
-  flexDirection?: 'row' | 'column';
+  flexDirection?: 'row' | 'column' | 'column-reverse' | 'row-reverse';
   justifyContent?:
     | 'flex-start'
     | 'flex-end'

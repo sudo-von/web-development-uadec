@@ -11,14 +11,25 @@ const Header = () => {
       alignItems="center"
       justifyContent={isLarge ? 'space-between' : 'flex-start'}
     >
-      <Container justifyContent="center" alignItems="center">
+      <Container
+        style={styles.logoContainer}
+        justifyContent={isLarge ? 'flex-start' : 'center'}
+        alignItems="center"
+      >
         <img
+          width={isLarge ? 40 : 30}
+          height={isLarge ? 41 : 31}
           src="assets/header/logotipo.png"
           alt="header"
           style={styles.logo}
         />
         <Container flexDirection="column" style={styles.multihouse}>
-          <img src="assets/header/Bienes Raices mULTIcASA.png" alt="header" />
+          <img
+            width={isLarge ? 377 : 307}
+            height={isLarge ? 23 : 23}
+            src="assets/header/Bienes Raices mULTIcASA.png"
+            alt="header"
+          />
           <img
             style={styles.bestOption}
             src="assets/header/Tu mejor opcion en agencia de bienes raices.png"

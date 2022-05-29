@@ -6,7 +6,7 @@ import Container from 'src/components/Container/Container';
 
 const leftButtons = [
   'Inicio',
-  'La Compañía',
+  'La Compañia',
   'Servicios',
   'Requisitos',
   'Contactos',
