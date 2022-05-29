@@ -1,47 +1,40 @@
 const styles = {
   container: {
-    borderTop: '5px solid #183046',
-    backgroundColor: '#3d6492',
-    width: 231,
-    height: 702,
-    paddingTop: 26,
+    width: 192,
+    paddingTop: 40,
+    paddingLeft: 18,
+    paddingRight: 18,
   },
-  searchContainer: {
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  searchImage: {
-    marginLeft: 7,
-  },
-  formContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
-  },
-  cityContainer: {
-    marginTop: 24,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  label: {
+  title: {
     color: 'white',
     fontFamily: 'Tahoma',
-    fontSize: 12,
-    fontWeight: 'bold',
-    marginBottom: 5,
+    fontSize: 14,
+    margin: 0,
+    padding: 0,
+    marginBottom: 8,
   },
-  inputContainer: {
-    marginTop: 11,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+  line: {
+    marginBottom: 8,
   },
-  button: {
-    marginTop: 27,
+  p: {
+    fontFamily: 'Tahoma',
+    fontSize: 13,
+    color: '#e9e7cd',
+    display: 'block',
+    margin: 0,
+    padding: 0,
+    marginTop: 18,
+  },
+  link: {
+    display: 'block',
+    margin: 0,
+    padding: 0,
+    fontSize: 11,
+    fontFamily: 'Tahoma',
+    color: '#ffe900',
+    textDecorationLine: 'underline',
+    textDecorationStyle: 'solid',
+    cursor: 'pointer',
   },
 } as const;
 

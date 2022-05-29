@@ -1,62 +1,41 @@
-import Button from 'src/components/Button/Button';
+import Container from 'src/components/Container/Container';
 import Image from 'src/components/Image/Image';
-import Input from 'src/components/Input/Input';
 import styles from './BottomNavside.styles';
 
 const BottomNavside = () => {
   return (
-    <div style={styles.container}>
-      <div style={styles.searchContainer}>
-        <Image
-          src="assets/buscador/img_lupa.png"
-          alt="Search"
-          height={41}
-          width={39}
-        />
-        <Image
-          style={styles.searchImage}
-          src="assets/buscador/Encuentra.png"
-          alt="Search"
-          height={30}
-          width={154}
-        />
+    <Container
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      style={styles.container}
+    >
+      <p style={styles.title}>Información De Última Hora</p>
+      <Image
+        src="assets/buscador/linea.png"
+        alt="White line"
+        height={4}
+        width={208}
+        style={styles.line}
+      />
+      <div>
+        <p style={styles.p}>Nuevo Convenio A Casas Ecológicas. </p>
+        <p style={styles.link}>Ver Más...</p>
       </div>
-      <form style={styles.formContainer}>
-        <div style={styles.cityContainer}>
-          <label style={styles.label} htmlFor="city">
-            Ciudad y Estado, o C.P.
-          </label>
-          <Input id="city" value="" />
-        </div>
-        <div style={styles.inputContainer}>
-          <label style={styles.label} htmlFor="range">
-            Rango de Busquéda
-          </label>
-          <Input id="range" value="" placeholder="Sin rango" />
-        </div>
-        <div style={styles.inputContainer}>
-          <label style={styles.label} htmlFor="price">
-            Rango De Precio De: - A:
-          </label>
-          <Input id="price" value="" placeholder="Todos" />
-        </div>
-        <div style={styles.inputContainer}>
-          <label style={styles.label} htmlFor="rooms">
-            Recámara(s)
-          </label>
-          <Input id="rooms" value="" placeholder="Sin rango" />
-        </div>
-        <div style={styles.inputContainer}>
-          <label style={styles.label} htmlFor="bathrooms">
-            Baño(s)
-          </label>
-          <Input id="bathrooms" value="" placeholder="Sin rango" />
-        </div>
-        <Button type="button" style={styles.button}>
-          Buscar
-        </Button>
-      </form>
-    </div>
+      <div>
+        <p style={styles.p}>
+          Conoce Nuestros Planes De Descuento Para Trabajadores Del ISSSTE.
+        </p>
+        <p style={styles.link}>Ver Más...</p>
+      </div>
+      <div>
+        <p style={styles.p}>
+          Enterate Como Puedes Pagar tu Mensualidad Si Te Encuentras En El
+          Extranjero.
+        </p>
+        <p style={styles.link}>Ver Más...</p>
+      </div>
+    </Container>
   );
 };
 
