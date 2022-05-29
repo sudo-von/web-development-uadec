@@ -1,33 +1,41 @@
+import Container from 'src/components/Container/Container';
 import Image from 'src/components/Image/Image';
-import styles from './LeftSide.styles';
+import useMediaQuery from 'src/hooks/useMediaQuery';
+import handleStyles from './LeftSide.styles';
 
 const LeftSide = () => {
+  const isLarge = useMediaQuery('(min-width: 1100px)');
+  const styles = handleStyles(isLarge);
   return (
-    <div style={styles.container}>
+    <Container
+      flexDirection={isLarge ? 'row' : 'column'}
+      justifyContent="center"
+      alignItems="center"
+      style={styles.container}
+    >
       <Image
         src="assets/header/logotipo.png"
         alt="Logo"
-        height={41}
-        width={40}
+        width={isLarge ? 40 : 30}
+        height={isLarge ? 41 : 31}
+        style={styles.logo}
       />
-      <div style={styles.ulContainer}>
-        <ul>
-          <li style={styles.link}>Inicio</li>
-          <span style={styles.dot}>:</span>
-          <li style={styles.link}>Compra</li>
-          <span style={styles.dot}>:</span>
-          <li style={styles.link}>Construir</li>
-          <span style={styles.dot}>:</span>
-          <li style={styles.link}>Venta</li>
-          <span style={styles.dot}>:</span>
-          <li style={styles.link}>Mudanzas</li>
-          <span style={styles.dot}>:</span>
-          <li style={styles.link}>Seguros</li>
-          <span style={styles.dot}>:</span>
-          <li style={styles.link}>Contactos</li>
-        </ul>
-      </div>
-    </div>
+      <ul style={styles.ulContainer}>
+        <li style={styles.link}>Inicio</li>
+        {isLarge && <span style={styles.dot}>:</span>}
+        <li style={styles.link}>Compra</li>
+        {isLarge && <span style={styles.dot}>:</span>}
+        <li style={styles.link}>Construir</li>
+        {isLarge && <span style={styles.dot}>:</span>}
+        <li style={styles.link}>Venta</li>
+        {isLarge && <span style={styles.dot}>:</span>}
+        <li style={styles.link}>Mudanzas</li>
+        {isLarge && <span style={styles.dot}>:</span>}
+        <li style={styles.link}>Seguros</li>
+        {isLarge && <span style={styles.dot}>:</span>}
+        <li style={styles.link}>Contactos</li>
+      </ul>
+    </Container>
   );
 };
 

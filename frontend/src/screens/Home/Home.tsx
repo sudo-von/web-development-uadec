@@ -27,6 +27,7 @@ const Home = () => {
         <Navside />
       </Container>
       <hr style={styles.blackLine} />
+      <Footer />
     </Container>
   );
 };
