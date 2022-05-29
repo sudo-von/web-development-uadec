@@ -1,7 +1,7 @@
 const styles = {
   viewMore: {
     marginLeft: 16,
-    display: 'inline',
+    display: 'line',
   } as const,
 };
 

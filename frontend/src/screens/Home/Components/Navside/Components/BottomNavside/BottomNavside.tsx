@@ -1,8 +1,11 @@
 import Container from 'src/components/Container/Container';
 import Image from 'src/components/Image/Image';
-import styles from './BottomNavside.styles';
+import useMediaQuery from 'src/hooks/useMediaQuery';
+import handleStyles from './BottomNavside.styles';
 
 const BottomNavside = () => {
+  const isLarge = useMediaQuery('(min-width: 1100px)');
+  const styles = handleStyles(isLarge);
   return (
     <Container
       flexDirection="column"
@@ -18,17 +21,17 @@ const BottomNavside = () => {
         width={208}
         style={styles.line}
       />
-      <div>
+      <div style={styles.pContainer}>
         <p style={styles.p}>Nuevo Convenio A Casas Ecológicas. </p>
         <p style={styles.link}>Ver Más...</p>
       </div>
-      <div>
+      <div style={styles.pContainer}>
         <p style={styles.p}>
           Conoce Nuestros Planes De Descuento Para Trabajadores Del ISSSTE.
         </p>
         <p style={styles.link}>Ver Más...</p>
       </div>
-      <div>
+      <div style={styles.pContainer}>
         <p style={styles.p}>
           Enterate Como Puedes Pagar tu Mensualidad Si Te Encuentras En El
           Extranjero.

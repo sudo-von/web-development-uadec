@@ -1,9 +1,12 @@
 body {
-  margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
+  width: 100%;
+  margin-top: 0;
+  margin-left:auto;
+  margin-right:auto;
   background: url('assets/background_full.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 
 input::placeholder {

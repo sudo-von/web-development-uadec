@@ -1,12 +1,13 @@
 import React from 'react';
 
 interface ContainerProps {
-  flexDirection?: 'row' | 'column';
+  flexDirection?: 'row' | 'column' | 'column-reverse' | 'row-reverse';
   justifyContent?:
     | 'flex-start'
     | 'flex-end'
     | 'center'
     | 'space-between'
+    | 'space-evenly'
     | 'space-around';
   alignItems?: 'start' | 'center' | 'flex-start' | 'flex-end' | 'baseline';
   style?: object;

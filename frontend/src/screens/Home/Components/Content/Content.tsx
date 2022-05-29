@@ -1,10 +1,13 @@
 import Container from 'src/components/Container/Container';
 import Image from 'src/components/Image/Image';
-import styles from 'src/screens/Home/Components/Content/Content.styles';
+import handleStyles from 'src/screens/Home/Components/Content/Content.styles';
 import Services from 'src/screens/Home/Components/Content/Components/Services/Services';
 import FrequentQuestions from 'src/screens/Home/Components/Content/Components/FrequentQuestions/FrequentQuestions';
+import useMediaQuery from 'src/hooks/useMediaQuery';
 
 const Content = () => {
+  const isLarge = useMediaQuery('(min-width: 1100px)');
+  const styles = handleStyles(isLarge);
   return (
     <div style={styles.contentContainer}>
       <Image
@@ -24,7 +27,8 @@ const Content = () => {
         />
       </Container>
       <Container
-        justifyContent="flex-start"
+        flexDirection={isLarge ? 'row' : 'column'}
+        justifyContent={isLarge ? 'flex-start' : 'center'}
         alignItems="center"
         style={styles.smallHousesContainer}
       >

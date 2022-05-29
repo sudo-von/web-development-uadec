@@ -1,9 +1,9 @@
-const styles = {
+const handleStyles = (isLarge: boolean) => ({
   navbar: {
     backgroundColor: '#10476b',
-    width: '1002px',
-    height: '151px',
+    width: isLarge ? 1002 : '80%',
+    height: isLarge ? 151 : '100%',
   } as const,
-};
+});
 
-export default styles;
+export default handleStyles;
