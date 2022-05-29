@@ -27,7 +27,8 @@ const Content = () => {
         />
       </Container>
       <Container
-        justifyContent="flex-start"
+        flexDirection={isLarge ? 'row' : 'column'}
+        justifyContent={isLarge ? 'flex-start' : 'center'}
         alignItems="center"
         style={styles.smallHousesContainer}
       >

@@ -5,7 +5,7 @@ const handleStyles = (isLarge: boolean) =>
     },
     container: {
       width: isLarge ? 1002 : '80%',
-      height: 925,
+      height: isLarge ? 925 : '100%',
     },
     contentContainer: {
       width: '100%',
@@ -13,7 +13,11 @@ const handleStyles = (isLarge: boolean) =>
       justifyContent: 'flex-start',
     },
     blackLine: {
-      display: 'block',
+      margin: 0,
+      padding: 0,
+      borderTop: '1px solid black',
+      borderBottom: '2px solid black',
+      width: isLarge ? '100%' : '80%',
     },
   } as const);
 

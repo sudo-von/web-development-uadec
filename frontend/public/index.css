@@ -5,6 +5,8 @@ body {
   margin-left:auto;
   margin-right:auto;
   background: url('assets/background_full.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
 }
 
 input::placeholder {

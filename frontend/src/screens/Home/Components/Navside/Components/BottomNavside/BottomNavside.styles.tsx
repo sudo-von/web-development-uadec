@@ -42,7 +42,7 @@ const handleStyles = (isLarge: boolean) =>
     },
     statsContainer: {
       marginTop: isLarge ? 28 : 10,
-      marginBottom: isLarge ? 0 : 15,
+      marginBottom: isLarge ? 6 : 15,
     },
     stats: {
       fontFamily: 'Helvetica',

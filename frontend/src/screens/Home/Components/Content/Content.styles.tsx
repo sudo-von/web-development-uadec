@@ -2,10 +2,13 @@ const styles = (isLarge: boolean) =>
   ({
     contentContainer: {
       width: isLarge ? 771 : '100%',
-      height: 925,
+      height: isLarge ? 925 : '100%',
       backgroundColor: 'white',
     },
     house: {
+      objectFit: 'fill',
+      width: isLarge ? 771 : '100%',
+      height: isLarge ? 255 : '100%',
       display: 'block',
     },
     welcome: {
@@ -14,19 +17,16 @@ const styles = (isLarge: boolean) =>
     },
     smallHouses: {
       marginRight: 14,
+      marginBottom: isLarge ? 0 : 20,
     },
     smallHousesContainer: {
+      marginTop: isLarge ? 0 : 20,
       paddingRight: 21,
       marginLeft: 26,
     },
     services: {
       marginTop: 40,
       marginBottom: 29,
-    },
-    servicesContainer: {
-      marginTop: 25,
-      marginLeft: 57,
-      marginRight: 37,
     },
     paragraphContainer: {
       marginTop: 29,

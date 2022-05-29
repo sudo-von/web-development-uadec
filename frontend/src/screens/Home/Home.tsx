@@ -1,6 +1,5 @@
 import Container from 'src/components/Container/Container';
 import Footer from 'src/components/Footer/Footer';
-import Image from 'src/components/Image/Image';
 import Navbar from 'src/components/Navbar/Navbar';
 import useMediaQuery from 'src/hooks/useMediaQuery';
 import Content from 'src/screens/Home/Components/Content/Content';
@@ -24,8 +23,10 @@ const Home = () => {
         alignItems="center"
         style={styles.container}
       >
+        <Content />
         <Navside />
       </Container>
+      <hr style={styles.blackLine} />
     </Container>
   );
 };

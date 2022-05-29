@@ -1,8 +1,11 @@
 import Image from 'src/components/Image/Image';
 import ViewMore from 'src/components/ViewMore/ViewMore';
-import styles from './Services.styles';
+import useMediaQuery from 'src/hooks/useMediaQuery';
+import handleStyles from './Services.styles';
 
 const Services = () => {
+  const isLarge = useMediaQuery('(min-width: 1100px)');
+  const styles = handleStyles(isLarge);
   return (
     <div style={styles.servicesContainer}>
       <p style={styles.paragraph}>
