@@ -1,18 +1,20 @@
-const styles = {
-  container: {
-    marginTop: 52,
-    display: 'flex',
-    justifyContent: 'space-between',
-    borderBottom: '5px solid #183046',
-  },
-  leftMenu: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-  },
-  rightMenu: {
-    display: 'flex',
-    justifyContent: 'flex-start',
-  },
-} as const;
+const styles = (isLarge: boolean) =>
+  ({
+    container: {
+      marginTop: isLarge ? 52 : 0,
+      borderBottom: '5px solid #183046',
+    },
+    leftMenu: {
+      width: isLarge ? '70%' : '100%',
+    },
+    button: {
+      fontSize: 14,
+    },
+    rightMenu: {
+      marginTop: isLarge ? 0 : 5,
+      width: isLarge ? '30%' : '100%',
+      height: 36,
+    },
+  } as const);
 
 export default styles;

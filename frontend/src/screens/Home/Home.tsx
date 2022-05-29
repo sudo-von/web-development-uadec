@@ -1,3 +1,4 @@
+import Container from 'src/components/Container/Container';
 import Footer from 'src/components/Footer/Footer';
 import Image from 'src/components/Image/Image';
 import Navbar from 'src/components/Navbar/Navbar';
@@ -7,7 +8,11 @@ import styles from 'src/screens/Home/Home.styles';
 
 const Home = () => {
   return (
-    <div>
+    <Container
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+    >
       <Navbar />
       <div style={styles.container}>
         <div style={styles.contentContainer}>
@@ -23,7 +28,7 @@ const Home = () => {
         />
         <Footer />
       </div>
-    </div>
+    </Container>
   );
 };
 

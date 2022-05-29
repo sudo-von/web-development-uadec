@@ -1,24 +1,36 @@
-import styles from './Header.styles';
+import Container from 'src/components/Container/Container';
+import useMediaQuery from 'src/hooks/useMediaQuery';
+import handleStyles from './Header.styles';
 
 const Header = () => {
+  const isLarge = useMediaQuery('(min-width: 1100px)');
+  const styles = handleStyles(isLarge);
   return (
-    <div style={styles.header}>
-      <div style={styles.leftHeader}>
+    <Container
+      flexDirection={isLarge ? 'row' : 'column'}
+      alignItems="center"
+      justifyContent={isLarge ? 'space-between' : 'flex-start'}
+    >
+      <Container justifyContent="center" alignItems="center">
         <img
           src="assets/header/logotipo.png"
           alt="header"
           style={styles.logo}
         />
-        <div style={styles.multihouse}>
+        <Container flexDirection="column" style={styles.multihouse}>
           <img src="assets/header/Bienes Raices mULTIcASA.png" alt="header" />
           <img
             style={styles.bestOption}
             src="assets/header/Tu mejor opcion en agencia de bienes raices.png"
             alt="header"
           />
-        </div>
-      </div>
-      <div style={styles.telephoneContainer}>
+        </Container>
+      </Container>
+      <Container
+        alignItems="center"
+        justifyContent={isLarge ? 'space-evenly' : 'center'}
+        style={styles.telephoneContainer}
+      >
         <img
           src="assets/header/bloque_call_now/telefono.png"
           alt="telephone"
@@ -28,8 +40,8 @@ const Header = () => {
           src="assets/header/bloque_call_now/LLama al_ 1-800-123-4567.png"
           alt="call now 1-800-123-4567"
         />
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 

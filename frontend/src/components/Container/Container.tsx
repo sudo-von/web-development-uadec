@@ -7,6 +7,7 @@ interface ContainerProps {
     | 'flex-end'
     | 'center'
     | 'space-between'
+    | 'space-evenly'
     | 'space-around';
   alignItems?: 'start' | 'center' | 'flex-start' | 'flex-end' | 'baseline';
   style?: object;
