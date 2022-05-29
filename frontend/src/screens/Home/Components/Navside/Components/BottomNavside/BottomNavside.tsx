@@ -35,6 +35,30 @@ const BottomNavside = () => {
         </p>
         <p style={styles.link}>Ver Más...</p>
       </div>
+      <div style={styles.statsContainer}>
+        <Container justifyContent="flex-start" alignItems="center">
+          <Image
+            src="assets/buscador/people.png"
+            alt="White line"
+            height={21}
+            width={22}
+            style={styles.line}
+          />
+          <span style={styles.stats}>Conectados: 674</span>
+        </Container>
+        <Container justifyContent="flex-start" alignItems="center">
+          <Image
+            src="assets/buscador/views.png"
+            alt="White line"
+            height={20}
+            width={20}
+            style={styles.line}
+          />
+          <span style={styles.stats}>
+            Visitas: <span style={styles.views}>7899</span>
+          </span>
+        </Container>
+      </div>
     </Container>
   );
 };

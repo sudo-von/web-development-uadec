@@ -8,7 +8,7 @@ const styles = {
     textShadow: '1px 1px #1164b4',
     fontFamily: 'Tahoma',
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 14,
     paddingLeft: 25,
     paddingRight: 25,
     paddingTop: 5,

@@ -1,7 +1,7 @@
 const styles = {
   container: {
     width: 192,
-    paddingTop: 40,
+    paddingTop: 20,
     paddingLeft: 18,
     paddingRight: 18,
   },
@@ -35,6 +35,24 @@ const styles = {
     textDecorationLine: 'underline',
     textDecorationStyle: 'solid',
     cursor: 'pointer',
+  },
+  statsContainer: {
+    marginTop: 28,
+  },
+  stats: {
+    fontFamily: 'Helvetica',
+    fontSize: 11,
+    color: 'white',
+    fontWeight: 'bold',
+    fontStyle: 'italic',
+  },
+  views: {
+    backgroundColor: '#f9f9f9',
+    border: '1px solid #c5e4ee',
+    color: '#303030',
+    letterSpacing: 2,
+    fontStyle: 'normal',
+    fontWeight: 'bold',
   },
 } as const;
 

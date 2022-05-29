@@ -2,7 +2,7 @@ const styles = {
   container: {
     borderTop: '5px solid #183046',
     width: 231,
-    paddingTop: 26,
+    paddingTop: 18,
   },
   searchContainer: {
     width: '100%',
@@ -20,7 +20,7 @@ const styles = {
     flexDirection: 'column',
   },
   cityContainer: {
-    marginTop: 24,
+    marginTop: 18,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -38,7 +38,7 @@ const styles = {
     justifyContent: 'center',
   },
   button: {
-    marginTop: 27,
+    marginTop: 25,
   },
 } as const;
 
