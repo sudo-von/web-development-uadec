@@ -1,3 +1,4 @@
+import Footer from 'src/components/Footer/Footer';
 import Image from 'src/components/Image/Image';
 import Navbar from 'src/components/Navbar/Navbar';
 import Content from 'src/screens/Home/Components/Content/Content';
@@ -16,6 +17,7 @@ const Home = () => {
           height={5}
           style={styles.blackLine}
         />
+        <Footer />
       </div>
     </div>
   );
