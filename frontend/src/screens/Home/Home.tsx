@@ -10,24 +10,26 @@ const Home = () => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
   return (
-    <Container
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      style={styles.homeContainer}
-    >
-      <Navbar />
+    <Container justifyContent="center">
       <Container
-        flexDirection={isLarge ? 'row' : 'column-reverse'}
+        flexDirection="column"
         justifyContent="center"
         alignItems="center"
-        style={styles.container}
+        style={styles.homeContainer}
       >
-        <Content />
-        <Navside />
+        <Navbar />
+        <Container
+          flexDirection={isLarge ? 'row' : 'column-reverse'}
+          justifyContent="center"
+          alignItems="center"
+          style={styles.container}
+        >
+          <Content />
+          <Navside />
+        </Container>
+        <hr style={styles.blackLine} />
+        <Footer />
       </Container>
-      <hr style={styles.blackLine} />
-      <Footer />
     </Container>
   );
 };

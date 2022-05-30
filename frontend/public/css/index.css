@@ -1,9 +1,7 @@
 body {
+  float: center;
   padding: 0;
-  width: 100%;
-  margin-top: 0;
-  margin-left:auto;
-  margin-right:auto;
+  margin: 0;
   background: url('../assets/background_full.jpg');
   background-repeat: no-repeat;
   background-size:cover;
