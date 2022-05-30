@@ -3,6 +3,7 @@ import Company from 'src/screens/Company/Company';
 import Home from 'src/screens/Home/Home';
 import Requirements from 'src/screens/Requirements/Requirements';
 import Sale from 'src/screens/Sale/Sale';
+import Buy from 'src/screens/Buy/Buy';
 
 const Router = (): JSX.Element => {
   return (
@@ -15,7 +16,7 @@ const Router = (): JSX.Element => {
         <Route path="/contacts" element={<Home />} />
         <Route path="/search" element={<Home />} />
         <Route path="/admin" element={<Home />} />
-        <Route path="/buy" element={<Home />} />
+        <Route path="/buy" element={<Buy />} />
         <Route path="/build" element={<Home />} />
         <Route path="/sale" element={<Sale />} />
         <Route path="/moving" element={<Home />} />
