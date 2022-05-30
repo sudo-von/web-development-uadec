@@ -14,7 +14,7 @@ const handleStyles = (isLarge: boolean) =>
       margin: 0,
       marginBottom: isLarge ? 0 : 15,
     },
-    link: {
+    li: {
       color: '#babab6',
       fontFamily: 'Tahoma',
       fontSize: 14,
@@ -24,6 +24,9 @@ const handleStyles = (isLarge: boolean) =>
       cursor: 'pointer',
       marginBottom: isLarge ? 0 : 10,
       textAlign: 'center',
+    },
+    link: {
+      textDecoration: 'none',
     },
     dot: {
       color: '#e97e00',

@@ -12,14 +12,14 @@ const MidNavside = () => {
     <div style={styles.container}>
       <div style={styles.searchContainer}>
         <Image
-          src="assets/buscador/img_lupa.png"
+          src="/assets/buscador/img_lupa.png"
           alt="Search"
           height={41}
           width={39}
         />
         <Image
           style={styles.searchImage}
-          src="assets/buscador/Encuentra.png"
+          src="/assets/buscador/Encuentra.png"
           alt="Search"
           height={30}
           width={154}

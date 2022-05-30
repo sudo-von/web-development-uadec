@@ -1,0 +1,12 @@
+body {
+  float: center;
+  padding: 0;
+  margin: 0;
+  background: url('../assets/background_full.jpg');
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+input::placeholder {
+  color: #5492b1;
+}

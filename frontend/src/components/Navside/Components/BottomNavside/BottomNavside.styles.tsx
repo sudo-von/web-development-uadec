@@ -37,9 +37,6 @@ const handleStyles = (isLarge: boolean) =>
       textDecorationStyle: 'solid',
       cursor: 'pointer',
     },
-    pContainer: {
-      width: isLarge ? '100%' : '90%',
-    },
     statsContainer: {
       marginTop: isLarge ? 28 : 10,
       marginBottom: isLarge ? 6 : 15,
@@ -58,6 +55,10 @@ const handleStyles = (isLarge: boolean) =>
       letterSpacing: 2,
       fontStyle: 'normal',
       fontWeight: 'bold',
+    },
+    route: {
+      textDecoration: 'none',
+      width: isLarge ? '100%' : '90%',
     },
   } as const);
 

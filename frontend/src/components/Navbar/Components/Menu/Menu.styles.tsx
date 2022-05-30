@@ -15,6 +15,10 @@ const styles = (isLarge: boolean) =>
       width: isLarge ? '30%' : '100%',
       height: 36,
     },
+    link: {
+      textDecoration: 'none',
+      color: 'white',
+    },
   } as const);
 
 export default styles;

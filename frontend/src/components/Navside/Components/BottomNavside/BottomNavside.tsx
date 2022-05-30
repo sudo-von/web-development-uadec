@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Container from 'src/components/Container/Container';
 import Image from 'src/components/Image/Image';
 import useMediaQuery from 'src/hooks/useMediaQuery';
@@ -15,33 +16,33 @@ const BottomNavside = () => {
     >
       <p style={styles.title}>Información De Última Hora</p>
       <Image
-        src="assets/buscador/linea.png"
+        src="/assets/buscador/linea.png"
         alt="White line"
         height={4}
         width={208}
         style={styles.line}
       />
-      <div style={styles.pContainer}>
+      <Link to="/news/echo-houses" style={styles.route}>
         <p style={styles.p}>Nuevo Convenio A Casas Ecológicas. </p>
         <p style={styles.link}>Ver Más...</p>
-      </div>
-      <div style={styles.pContainer}>
+      </Link>
+      <Link to="/news/isste" style={styles.route}>
         <p style={styles.p}>
           Conoce Nuestros Planes De Descuento Para Trabajadores Del ISSSTE.
         </p>
         <p style={styles.link}>Ver Más...</p>
-      </div>
-      <div style={styles.pContainer}>
+      </Link>
+      <Link to="/news/foreign" style={styles.route}>
         <p style={styles.p}>
           Enterate Como Puedes Pagar tu Mensualidad Si Te Encuentras En El
           Extranjero.
         </p>
         <p style={styles.link}>Ver Más...</p>
-      </div>
+      </Link>
       <div style={styles.statsContainer}>
         <Container justifyContent="flex-start" alignItems="center">
           <Image
-            src="assets/buscador/people.png"
+            src="/assets/buscador/people.png"
             alt="White line"
             height={21}
             width={22}
@@ -51,7 +52,7 @@ const BottomNavside = () => {
         </Container>
         <Container justifyContent="flex-start" alignItems="center">
           <Image
-            src="assets/buscador/views.png"
+            src="/assets/buscador/views.png"
             alt="White line"
             height={20}
             width={20}

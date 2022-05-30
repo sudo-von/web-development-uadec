@@ -11,7 +11,7 @@ const Content = () => {
   return (
     <div style={styles.contentContainer}>
       <Image
-        src="assets/bg_body_slice/boca-raton-exterior.jpg"
+        src="/assets/bg_body_slice/boca-raton-exterior.jpg"
         alt="House wallpaper"
         width={771}
         height={255}
@@ -19,7 +19,7 @@ const Content = () => {
       />
       <Container justifyContent="center">
         <Image
-          src="assets/bg_body_slice/welcome.png"
+          src="/assets/bg_body_slice/welcome.png"
           alt="Welcome logo"
           width={234}
           height={33}
@@ -33,7 +33,7 @@ const Content = () => {
         style={styles.smallHousesContainer}
       >
         <Image
-          src="assets/bg_body_slice/small_houses.png"
+          src="/assets/bg_body_slice/small_houses.png"
           alt="Small houses"
           width={159}
           height={142}

@@ -20,7 +20,7 @@ const handleStyles = (isLarge: boolean) =>
       marginTop: 2,
     },
     telephoneContainer: {
-      width: isLarge ? 200 : '74%',
+      width: isLarge ? 200 : '100%',
       height: 43,
       backgroundImage: `url(assets/header/bloque_call_now/cuadro_blanco.png)`,
       marginTop: isLarge ? 15 : 5,
