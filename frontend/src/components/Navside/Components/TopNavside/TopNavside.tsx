@@ -46,11 +46,11 @@ const TopNavside = () => {
       style={styles.container}
     >
       {buttons.map(({ text, route }) => (
-        <Link to={route} style={styles.link}>
-          <TransparentButton style={styles.transparentButton}>
+        <TransparentButton style={styles.transparentButton}>
+          <Link to={route} style={styles.link}>
             {text}
-          </TransparentButton>
-        </Link>
+          </Link>
+        </TransparentButton>
       ))}
     </Container>
   );

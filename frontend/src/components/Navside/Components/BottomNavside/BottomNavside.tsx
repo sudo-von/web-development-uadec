@@ -23,27 +23,21 @@ const BottomNavside = () => {
         style={styles.line}
       />
       <Link to="/news/echo-houses" style={styles.route}>
-        <div style={styles.pContainer}>
-          <p style={styles.p}>Nuevo Convenio A Casas Ecológicas. </p>
-          <p style={styles.link}>Ver Más...</p>
-        </div>
+        <p style={styles.p}>Nuevo Convenio A Casas Ecológicas. </p>
+        <p style={styles.link}>Ver Más...</p>
       </Link>
       <Link to="/news/isste" style={styles.route}>
-        <div style={styles.pContainer}>
-          <p style={styles.p}>
-            Conoce Nuestros Planes De Descuento Para Trabajadores Del ISSSTE.
-          </p>
-          <p style={styles.link}>Ver Más...</p>
-        </div>
+        <p style={styles.p}>
+          Conoce Nuestros Planes De Descuento Para Trabajadores Del ISSSTE.
+        </p>
+        <p style={styles.link}>Ver Más...</p>
       </Link>
       <Link to="/news/foreign" style={styles.route}>
-        <div style={styles.pContainer}>
-          <p style={styles.p}>
-            Enterate Como Puedes Pagar tu Mensualidad Si Te Encuentras En El
-            Extranjero.
-          </p>
-          <p style={styles.link}>Ver Más...</p>
-        </div>
+        <p style={styles.p}>
+          Enterate Como Puedes Pagar tu Mensualidad Si Te Encuentras En El
+          Extranjero.
+        </p>
+        <p style={styles.link}>Ver Más...</p>
       </Link>
       <div style={styles.statsContainer}>
         <Container justifyContent="flex-start" alignItems="center">

@@ -47,9 +47,11 @@ const Menu = () => {
         justifyContent={isLarge ? 'flex-start' : 'center'}
       >
         {leftButtons.map(({ text, route }) => (
-          <Link to={route} style={styles.link}>
-            <Button style={styles.button}>{text}</Button>
-          </Link>
+          <Button style={styles.button}>
+            <Link to={route} style={styles.link}>
+              {text}
+            </Link>
+          </Button>
         ))}
       </Container>
       <Container

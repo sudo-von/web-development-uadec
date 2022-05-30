@@ -16,6 +16,7 @@ const styles = (isLarge: boolean) =>
     },
     link: {
       textDecoration: 'none',
+      color: 'white',
     },
   } as const);
 

@@ -16,7 +16,7 @@ const handleStyles = (isLarge: boolean) =>
       fontSize: 12,
       padding: 0,
       margin: 0,
-      textAlign: 'right',
+      textAlign: isLarge ? 'right' : 'center',
       textDecorationLine: 'underline',
       textDecorationStyle: 'solid',
       cursor: 'pointer',
