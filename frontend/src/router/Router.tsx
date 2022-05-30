@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Company from 'src/screens/Company/Company';
 import Home from 'src/screens/Home/Home';
+import Sale from 'src/screens/Sale/Sale';
 
 const Router = (): JSX.Element => {
   return (
@@ -15,7 +16,7 @@ const Router = (): JSX.Element => {
         <Route path="/admin" element={<Home />} />
         <Route path="/buy" element={<Home />} />
         <Route path="/build" element={<Home />} />
-        <Route path="/sale" element={<Home />} />
+        <Route path="/sale" element={<Sale />} />
         <Route path="/moving" element={<Home />} />
         <Route path="/insurance" element={<Home />} />
         <Route path="/privacy-policies" element={<Home />} />
