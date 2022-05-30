@@ -17,7 +17,7 @@ const Services = () => {
       </p>
       <br />
       <Image
-        src="assets/bg_body_slice/services.png"
+        src="/assets/bg_body_slice/services.png"
         alt="Services"
         width={161}
         height={12}

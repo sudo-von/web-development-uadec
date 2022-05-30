@@ -3,13 +3,34 @@ import Button from 'src/components/Navbar/Components/Menu/Components/Button/Butt
 import SmallButton from 'src/components/Navbar/Components/Menu/Components/SmallButton/SmallButton';
 import useMediaQuery from 'src/hooks/useMediaQuery';
 import Container from 'src/components/Container/Container';
+import { Link } from 'react-router-dom';
 
-const leftButtons = [
-  'Inicio',
-  'La Compañia',
-  'Servicios',
-  'Requisitos',
-  'Contactos',
+type LeftButton = {
+  text: string;
+  route: string;
+};
+
+const leftButtons: LeftButton[] = [
+  {
+    text: 'Inicio',
+    route: '/',
+  },
+  {
+    text: 'La Compañia',
+    route: '/company',
+  },
+  {
+    text: 'Servicios',
+    route: '/services',
+  },
+  {
+    text: 'Requisitos',
+    route: '/requirements',
+  },
+  {
+    text: 'Contactos',
+    route: '/contacts',
+  },
 ];
 
 const Menu = () => {
@@ -25,8 +46,10 @@ const Menu = () => {
         style={styles.leftMenu}
         justifyContent={isLarge ? 'flex-start' : 'center'}
       >
-        {leftButtons.map((button) => (
-          <Button style={styles.button}>{button}</Button>
+        {leftButtons.map(({ text, route }) => (
+          <Link to={route} style={styles.link}>
+            <Button style={styles.button}>{text}</Button>
+          </Link>
         ))}
       </Container>
       <Container
@@ -34,15 +57,21 @@ const Menu = () => {
         alignItems="center"
         style={styles.rightMenu}
       >
-        <SmallButton marginLeft={6} marginRight={18}>
-          Inicio
-        </SmallButton>
-        <SmallButton marginLeft={4} marginRight={17}>
-          Buscar
-        </SmallButton>
-        <SmallButton marginLeft={4} marginRight={8}>
-          Admin .
-        </SmallButton>
+        <Link to="/" style={styles.link}>
+          <SmallButton marginLeft={6} marginRight={18}>
+            Inicio
+          </SmallButton>
+        </Link>
+        <Link to="/search" style={styles.link}>
+          <SmallButton marginLeft={4} marginRight={17}>
+            Buscar
+          </SmallButton>
+        </Link>
+        <Link to="/admin" style={styles.link}>
+          <SmallButton marginLeft={4} marginRight={8}>
+            Admin .
+          </SmallButton>
+        </Link>
       </Container>
     </Container>
   );

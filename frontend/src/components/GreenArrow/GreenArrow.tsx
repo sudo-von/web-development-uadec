@@ -6,7 +6,7 @@ const GreenArrow = () => {
       alt="Green arrow"
       width={9}
       height={8}
-      src="assets/bg_body_slice/green_arrow.png"
+      src="/assets/bg_body_slice/green_arrow.png"
     />
   );
 };

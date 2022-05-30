@@ -18,10 +18,13 @@ const Router = (): JSX.Element => {
         <Route path="/moving" element={<Home />} />
         <Route path="/insurance" element={<Home />} />
         <Route path="/privacy-policies" element={<Home />} />
-        <Route path="/faq-policies" element={<Home />} />
-        <Route path="/quality-policies" element={<Home />} />
-        <Route path="/tips" element={<Home />} />
-        <Route path="/iso" element={<Home />} />
+        <Route path="/frequent-questions/faq" element={<Home />} />
+        <Route path="/frequent-questions/quality-policies" element={<Home />} />
+        <Route path="/frequent-questions/tips" element={<Home />} />
+        <Route path="/frequent-questions/iso" element={<Home />} />
+        <Route path="/news/echo-houses" element={<Home />} />
+        <Route path="/news/isste" element={<Home />} />
+        <Route path="/news/foreign" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

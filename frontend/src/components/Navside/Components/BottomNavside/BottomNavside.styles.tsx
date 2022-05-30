@@ -59,6 +59,9 @@ const handleStyles = (isLarge: boolean) =>
       fontStyle: 'normal',
       fontWeight: 'bold',
     },
+    route: {
+      textDecoration: 'none',
+    },
   } as const);
 
 export default handleStyles;

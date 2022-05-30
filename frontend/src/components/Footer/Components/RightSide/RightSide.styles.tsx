@@ -10,7 +10,7 @@ const handleStyles = (isLarge: boolean) =>
       marginRight: isLarge ? 25 : 0,
       marginBottom: isLarge ? 0 : 15,
     },
-    link: {
+    policies: {
       color: '#e97e00',
       fontFamily: 'Tahoma',
       fontSize: 12,
@@ -29,6 +29,9 @@ const handleStyles = (isLarge: boolean) =>
       fontSize: 12,
       display: 'inline',
       textAlign: 'right',
+    },
+    link: {
+      textDecoration: 'none',
     },
   } as const);
 

@@ -1,7 +1,40 @@
+import { Link } from 'react-router-dom';
 import Container from 'src/components/Container/Container';
 import useMediaQuery from 'src/hooks/useMediaQuery';
 import TransparentButton from '../TransparentButton/TransparentButton';
 import handleStyles from './TopNavside.styles';
+
+type TransparentButtonLink = {
+  text: string;
+  route: string;
+};
+
+const buttons: TransparentButtonLink[] = [
+  {
+    text: 'COMPRA',
+    route: '/buy',
+  },
+  {
+    text: 'CONSTRUIR',
+    route: '/build',
+  },
+  {
+    text: 'VENTA',
+    route: '/sale',
+  },
+  {
+    text: 'MUDANZAS',
+    route: '/moving',
+  },
+  {
+    text: 'SEGUROS',
+    route: '/insurance',
+  },
+  {
+    text: 'CONTACTOS',
+    route: '/contacts',
+  },
+];
 
 const TopNavside = () => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
@@ -12,24 +45,13 @@ const TopNavside = () => {
       justifyContent="flex-start"
       style={styles.container}
     >
-      <TransparentButton style={styles.transparentButton}>
-        COMPRA
-      </TransparentButton>
-      <TransparentButton style={styles.transparentButton}>
-        CONSTRUIR
-      </TransparentButton>
-      <TransparentButton style={styles.transparentButton}>
-        VENTA
-      </TransparentButton>
-      <TransparentButton style={styles.transparentButton}>
-        MUDANZAS
-      </TransparentButton>
-      <TransparentButton style={styles.transparentButton}>
-        SEGUROS
-      </TransparentButton>
-      <TransparentButton style={styles.transparentButton}>
-        CONTACTOS
-      </TransparentButton>
+      {buttons.map(({ text, route }) => (
+        <Link to={route} style={styles.link}>
+          <TransparentButton style={styles.transparentButton}>
+            {text}
+          </TransparentButton>
+        </Link>
+      ))}
     </Container>
   );
 };

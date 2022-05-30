@@ -14,6 +14,9 @@ const styles = (isLarge: boolean) =>
       paddingRight: isLarge ? 45 : 0,
       justifyContent: isLarge ? 'flex-end' : 'center',
     },
+    link: {
+      textDecoration: 'none',
+    },
   } as const);
 
 export default styles;
