@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Company from 'src/screens/Company/Company';
 import Home from 'src/screens/Home/Home';
+import Requirements from 'src/screens/Requirements/Requirements';
 
 const Router = (): JSX.Element => {
   return (
@@ -9,7 +10,7 @@ const Router = (): JSX.Element => {
         <Route path="/" element={<Home />} />
         <Route path="/company" element={<Company />} />
         <Route path="/services" element={<Home />} />
-        <Route path="/requirements" element={<Home />} />
+        <Route path="/requirements" element={<Requirements />} />
         <Route path="/contacts" element={<Home />} />
         <Route path="/search" element={<Home />} />
         <Route path="/admin" element={<Home />} />
