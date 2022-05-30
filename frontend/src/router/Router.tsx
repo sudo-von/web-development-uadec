@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Company from 'src/screens/Company/Company';
 import Home from 'src/screens/Home/Home';
 
 const Router = (): JSX.Element => {
@@ -6,7 +7,7 @@ const Router = (): JSX.Element => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/company" element={<Home />} />
+        <Route path="/company" element={<Company />} />
         <Route path="/services" element={<Home />} />
         <Route path="/requirements" element={<Home />} />
         <Route path="/contacts" element={<Home />} />
