@@ -1,7 +1,7 @@
-import Home from 'src/screens/Home/Home';
+import Router from 'src/router/Router';
 
 function App() {
-  return <Home />;
+  return <Router />;
 }
 
 export default App;

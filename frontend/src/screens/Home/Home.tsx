@@ -3,7 +3,7 @@ import Footer from 'src/components/Footer/Footer';
 import Navbar from 'src/components/Navbar/Navbar';
 import useMediaQuery from 'src/hooks/useMediaQuery';
 import Content from 'src/screens/Home/Components/Content/Content';
-import Navside from 'src/screens/Home/Components/Navside/Navside';
+import Navside from 'src/components/Navside/Navside';
 import handleStyles from 'src/screens/Home/Home.styles';
 
 const Home = () => {
