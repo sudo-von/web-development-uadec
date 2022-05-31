@@ -11,6 +11,7 @@ import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
 import FrequentQuestions from 'src/screens/FrequentQuestions/FrequentQuestions';
 import Tips from 'src/screens/Tips/Tips';
 import Iso from 'src/screens/Iso/Iso';
+import Services from 'src/screens/Services/Services';
 import { RouteProps } from 'src/router/Router';
 
 const routes: RouteProps[] = [
@@ -24,7 +25,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/services',
-    element: <Home />,
+    element: <Services />,
   },
   {
     path: '/requirements',
