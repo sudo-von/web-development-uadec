@@ -1,9 +1,12 @@
-function App() {
+import Router from 'src/router/Router';
+import AuthProvider from 'src/providers/auth.provider';
+
+const App = (): JSX.Element => {
   return (
-    <div className="App">
-      Hello from react
-    </div>
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
   );
-}
+};
 
 export default App;
