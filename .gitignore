@@ -5,3 +5,5 @@ react/node_modules
 react/build
 # Environment variables.
 .env
+# Backend
+backend\api\migrations
