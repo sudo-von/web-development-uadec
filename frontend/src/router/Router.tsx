@@ -1,3 +1,4 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { useAuth } from 'src/contexts/auth.context';
 import PublicRoutes from './Components/PublicRoutes/PublicRoutes';
