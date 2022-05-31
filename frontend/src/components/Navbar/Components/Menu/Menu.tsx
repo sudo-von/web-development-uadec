@@ -4,6 +4,7 @@ import SmallButton from 'src/components/Navbar/Components/Menu/Components/SmallB
 import useMediaQuery from 'src/hooks/useMediaQuery';
 import Container from 'src/components/Container/Container';
 import { Link } from 'react-router-dom';
+import { useAuth } from 'src/contexts/auth.context';
 
 type LeftButton = {
   text: string;
@@ -34,6 +35,8 @@ const leftButtons: LeftButton[] = [
 ];
 
 const Menu = () => {
+  const { authState } = useAuth();
+  const { isLoggedIn } = authState;
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
   return (
@@ -69,11 +72,19 @@ const Menu = () => {
             Buscar
           </SmallButton>
         </Link>
-        <Link to="/admin" style={styles.link}>
-          <SmallButton marginLeft={4} marginRight={8}>
-            Admin .
-          </SmallButton>
-        </Link>
+        {isLoggedIn ? (
+          <Link to="/logout" style={styles.link}>
+            <SmallButton marginLeft={4} marginRight={8}>
+              Cerrar sesión
+            </SmallButton>
+          </Link>
+        ) : (
+          <Link to="/admin" style={styles.link}>
+            <SmallButton marginLeft={4} marginRight={8}>
+              Admin .
+            </SmallButton>
+          </Link>
+        )}
       </Container>
     </Container>
   );
