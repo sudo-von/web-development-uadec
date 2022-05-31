@@ -4,19 +4,33 @@ import handleStyles from 'src/screens/Home/Components/Content/Content.styles';
 import Services from 'src/screens/Home/Components/Content/Components/Services/Services';
 import FrequentQuestions from 'src/screens/Home/Components/Content/Components/FrequentQuestions/FrequentQuestions';
 import useMediaQuery from 'src/hooks/useMediaQuery';
+import ImageGallery from 'react-image-gallery';
+import './Content.css';
+
+const images = [
+  {
+    original: '/assets/bg_body_slice/boca-raton-exterior.jpg',
+    originalHeight: 255,
+    originalWidth: 771,
+  },
+  {
+    original: '/assets/bg_body_slice/house-1.jpg',
+    originalHeight: 255,
+    originalWidth: 771,
+  },
+  {
+    original: '/assets/bg_body_slice/house-2.jpg',
+    originalHeight: 255,
+    originalWidth: 771,
+  },
+];
 
 const Content = () => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
   return (
     <div style={styles.contentContainer}>
-      <Image
-        src="/assets/bg_body_slice/boca-raton-exterior.jpg"
-        alt="House wallpaper"
-        width={771}
-        height={255}
-        style={styles.house}
-      />
+      <ImageGallery items={images} />
       <Container justifyContent="center">
         <Image
           src="/assets/bg_body_slice/welcome.png"
