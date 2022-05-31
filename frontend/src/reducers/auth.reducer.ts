@@ -1,4 +1,3 @@
-import { initialAuthState } from 'src/contexts/auth.context';
 import { AuthContextState } from 'src/contexts/auth.context.types';
 import { AuthAction, AuthActionKind } from './auth.actions';
 
@@ -14,7 +13,12 @@ const authReducer = (
       };
     }
     case AuthActionKind.LOGOUT: {
-      return initialAuthState;
+      return {
+        isLoggedIn: false,
+        user: {
+          username: '',
+        },
+      };
     }
     default: {
       return state;

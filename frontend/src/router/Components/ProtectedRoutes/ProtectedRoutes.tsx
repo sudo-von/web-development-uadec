@@ -12,6 +12,7 @@ import FrequentQuestions from 'src/screens/FrequentQuestions/FrequentQuestions';
 import Tips from 'src/screens/Tips/Tips';
 import Iso from 'src/screens/Iso/Iso';
 import { RouteProps } from 'src/router/Router';
+import Logout from 'src/screens/Logout/Logout';
 
 const routes: RouteProps[] = [
   {
@@ -92,7 +93,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/logout',
-    element: <Home />,
+    element: <Logout />,
   },
   {
     path: '*',
