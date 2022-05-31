@@ -13,6 +13,7 @@ import Tips from 'src/screens/Tips/Tips';
 import Iso from 'src/screens/Iso/Iso';
 import Services from 'src/screens/Services/Services';
 import { RouteProps } from 'src/router/Router';
+import Moving from 'src/screens/Moving/Moving';
 
 const routes: RouteProps[] = [
   {
@@ -57,7 +58,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/moving',
-    element: <Home />,
+    element: <Moving />,
   },
   {
     path: '/insurance',
