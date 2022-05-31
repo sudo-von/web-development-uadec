@@ -8,7 +8,7 @@ from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
 
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
 from rest_framework.response import Response
 
 from rest_framework.permissions import IsAuthenticated
@@ -18,6 +18,8 @@ from rest_framework import generics, permissions
 from knox.models import AuthToken
 from knox.auth import TokenAuthentication
 from .serializers import *
+
+from rest_framework.parsers import MultiPartParser, FormParser
 # Create your views here.
 
 
@@ -232,6 +234,7 @@ def houseDetail(request,pk):
 
 #//////////////CREATE NEW HOUSE/////////////////////////////////////////
 @api_view(['POST'])
+@parser_classes([MultiPartParser,FormParser])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def houseCreate(request):
