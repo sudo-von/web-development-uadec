@@ -7,6 +7,7 @@ import Buy from 'src/screens/Buy/Buy';
 import PrivacyPolicies from 'src/screens/PrivacyPolicies/PrivacyPolicies';
 import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
 import FrequentQuestions from 'src/screens/FrequentQuestions/FrequentQuestions';
+import Tips from 'src/screens/Tips/Tips';
 
 const Router = (): JSX.Element => {
   return (
@@ -30,7 +31,7 @@ const Router = (): JSX.Element => {
           path="/frequent-questions/quality-policies"
           element={<QualityPolicies />}
         />
-        <Route path="/frequent-questions/tips" element={<Home />} />
+        <Route path="/frequent-questions/tips" element={<Tips />} />
         <Route path="/frequent-questions/iso" element={<Home />} />
         <Route path="/news/echo-houses" element={<Home />} />
         <Route path="/news/isste" element={<Home />} />
