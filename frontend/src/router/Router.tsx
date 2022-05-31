@@ -4,6 +4,8 @@ import Home from 'src/screens/Home/Home';
 import Requirements from 'src/screens/Requirements/Requirements';
 import Sale from 'src/screens/Sale/Sale';
 import Buy from 'src/screens/Buy/Buy';
+import PrivacyPolicies from 'src/screens/PrivacyPolicies/PrivacyPolicies';
+import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
 
 const Router = (): JSX.Element => {
   return (
@@ -21,9 +23,12 @@ const Router = (): JSX.Element => {
         <Route path="/sale" element={<Sale />} />
         <Route path="/moving" element={<Home />} />
         <Route path="/insurance" element={<Home />} />
-        <Route path="/privacy-policies" element={<Home />} />
+        <Route path="/privacy-policies" element={<PrivacyPolicies />} />
         <Route path="/frequent-questions/faq" element={<Home />} />
-        <Route path="/frequent-questions/quality-policies" element={<Home />} />
+        <Route
+          path="/frequent-questions/quality-policies"
+          element={<QualityPolicies />}
+        />
         <Route path="/frequent-questions/tips" element={<Home />} />
         <Route path="/frequent-questions/iso" element={<Home />} />
         <Route path="/news/echo-houses" element={<Home />} />
