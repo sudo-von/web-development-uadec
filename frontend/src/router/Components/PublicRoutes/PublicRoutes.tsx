@@ -14,6 +14,7 @@ import Iso from 'src/screens/Iso/Iso';
 import Services from 'src/screens/Services/Services';
 import { RouteProps } from 'src/router/Router';
 import Moving from 'src/screens/Moving/Moving';
+import Build from 'src/screens/Build/Build';
 
 const routes: RouteProps[] = [
   {
@@ -50,7 +51,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/build',
-    element: <Home />,
+    element: <Build />,
   },
   {
     path: '/sale',
