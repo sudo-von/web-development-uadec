@@ -2,13 +2,23 @@ import styles from './Button.styles';
 
 interface ButtonProps {
   children: React.ReactNode;
-  type: 'button' | 'submit';
+  type?: 'button' | 'submit';
   style?: object;
+  onClick?: () => void;
 }
 
-const Button = ({ children, type = 'button', style = {} }: ButtonProps) => {
+const Button = ({
+  children,
+  type = 'button',
+  style = {},
+  onClick,
+}: ButtonProps) => {
   return (
-    <button style={{ ...styles.button, ...style }} type={type}>
+    <button
+      onClick={onClick}
+      style={{ ...styles.button, ...style }}
+      type={type}
+    >
       {children}
     </button>
   );
