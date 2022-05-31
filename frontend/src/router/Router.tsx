@@ -6,6 +6,7 @@ import Sale from 'src/screens/Sale/Sale';
 import Buy from 'src/screens/Buy/Buy';
 import PrivacyPolicies from 'src/screens/PrivacyPolicies/PrivacyPolicies';
 import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
+import Services from 'src/screens/Services/Services';
 
 const Router = (): JSX.Element => {
   return (
@@ -13,7 +14,7 @@ const Router = (): JSX.Element => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/company" element={<Company />} />
-        <Route path="/services" element={<Home />} />
+        <Route path="/services" element={<Services />} />
         <Route path="/requirements" element={<Requirements />} />
         <Route path="/contacts" element={<Home />} />
         <Route path="/search" element={<Home />} />
