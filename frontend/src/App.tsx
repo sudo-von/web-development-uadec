@@ -4,9 +4,9 @@ import AuthProvider from 'src/providers/auth.provider';
 const App = (): JSX.Element => {
   return (
     <AuthProvider>
-      <Router />;
+      <Router />
     </AuthProvider>
   );
-}
+};
 
 export default App;
