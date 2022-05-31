@@ -6,6 +6,11 @@ import Sale from 'src/screens/Sale/Sale';
 import Buy from 'src/screens/Buy/Buy';
 import Contact from 'src/screens/Contact/Contact';
 import Login from 'src/screens/Login/Login';
+import PrivacyPolicies from 'src/screens/PrivacyPolicies/PrivacyPolicies';
+import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
+import FrequentQuestions from 'src/screens/FrequentQuestions/FrequentQuestions';
+import Tips from 'src/screens/Tips/Tips';
+import Iso from 'src/screens/Iso/Iso';
 
 const Router = (): JSX.Element => {
   return (
@@ -23,11 +28,14 @@ const Router = (): JSX.Element => {
         <Route path="/sale" element={<Sale />} />
         <Route path="/moving" element={<Home />} />
         <Route path="/insurance" element={<Home />} />
-        <Route path="/privacy-policies" element={<Home />} />
-        <Route path="/frequent-questions/faq" element={<Home />} />
-        <Route path="/frequent-questions/quality-policies" element={<Home />} />
-        <Route path="/frequent-questions/tips" element={<Home />} />
-        <Route path="/frequent-questions/iso" element={<Home />} />
+        <Route path="/privacy-policies" element={<PrivacyPolicies />} />
+        <Route path="/frequent-questions/faq" element={<FrequentQuestions />} />
+        <Route
+          path="/frequent-questions/quality-policies"
+          element={<QualityPolicies />}
+        />
+        <Route path="/frequent-questions/tips" element={<Tips />} />
+        <Route path="/frequent-questions/iso" element={<Iso />} />
         <Route path="/news/echo-houses" element={<Home />} />
         <Route path="/news/isste" element={<Home />} />
         <Route path="/news/foreign" element={<Home />} />
