@@ -8,6 +8,7 @@ import PrivacyPolicies from 'src/screens/PrivacyPolicies/PrivacyPolicies';
 import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
 import FrequentQuestions from 'src/screens/FrequentQuestions/FrequentQuestions';
 import Tips from 'src/screens/Tips/Tips';
+import Iso from 'src/screens/Iso/Iso';
 
 const Router = (): JSX.Element => {
   return (
@@ -32,7 +33,7 @@ const Router = (): JSX.Element => {
           element={<QualityPolicies />}
         />
         <Route path="/frequent-questions/tips" element={<Tips />} />
-        <Route path="/frequent-questions/iso" element={<Home />} />
+        <Route path="/frequent-questions/iso" element={<Iso />} />
         <Route path="/news/echo-houses" element={<Home />} />
         <Route path="/news/isste" element={<Home />} />
         <Route path="/news/foreign" element={<Home />} />
