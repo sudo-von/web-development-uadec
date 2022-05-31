@@ -4,14 +4,26 @@ interface InputProps {
   id?: string;
   placeholder?: string;
   value: string | number;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   style?: object;
+  type?: string;
+  name?: string;
 }
 
-const Input = ({ id, placeholder, value, onChange, style }: InputProps) => {
+const Input = ({
+  id,
+  placeholder,
+  value,
+  onChange,
+  style,
+  type = 'text',
+  name,
+}: InputProps) => {
   return (
     <input
       id={id}
+      name={name}
+      type={type}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
