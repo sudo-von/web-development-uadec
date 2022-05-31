@@ -6,6 +6,7 @@ import Sale from 'src/screens/Sale/Sale';
 import Buy from 'src/screens/Buy/Buy';
 import PrivacyPolicies from 'src/screens/PrivacyPolicies/PrivacyPolicies';
 import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
+import FrequentQuestions from 'src/screens/FrequentQuestions/FrequentQuestions';
 
 const Router = (): JSX.Element => {
   return (
@@ -24,7 +25,7 @@ const Router = (): JSX.Element => {
         <Route path="/moving" element={<Home />} />
         <Route path="/insurance" element={<Home />} />
         <Route path="/privacy-policies" element={<PrivacyPolicies />} />
-        <Route path="/frequent-questions/faq" element={<Home />} />
+        <Route path="/frequent-questions/faq" element={<FrequentQuestions />} />
         <Route
           path="/frequent-questions/quality-policies"
           element={<QualityPolicies />}
