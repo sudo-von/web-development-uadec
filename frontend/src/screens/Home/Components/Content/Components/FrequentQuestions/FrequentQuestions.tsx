@@ -16,14 +16,14 @@ const FrequentQuestions = () => {
             <GreenArrow /> Preguntas Frecuentes
           </p>
         </Link>
-        <Link to="/frequent-questions/quality-policies">
+        <Link to="/frequent-questions/tips">
           <p style={styles.paragraph}>
             <GreenArrow /> Tips Para Antes De Comprar
           </p>
         </Link>
       </div>
       <div style={styles.policiesContainer}>
-        <Link to="/frequent-questions/tips">
+        <Link to="/frequent-questions/quality-policies">
           <p style={styles.paragraph}>
             <GreenArrow /> Políticas De Calidad
           </p>
