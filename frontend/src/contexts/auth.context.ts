@@ -1,10 +1,12 @@
 import { createContext, useContext } from 'react';
+import { getUser } from 'src/services/localStorage.service';
+import { getToken, isTokenExpired } from 'src/services/token.service';
 import { AuthContextState, AuthContextType } from './auth.context.types';
 
 const initialAuthState: AuthContextState = {
-  isLoggedIn: false,
+  isLoggedIn: getToken() && !isTokenExpired() ? true : false,
   user: {
-    username: '',
+    username: getUser() ?? '',
   },
 };
 

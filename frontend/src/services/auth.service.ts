@@ -1,5 +1,6 @@
 import client from 'src/helpers/public-axios-helper';
 import { setToken, Token } from 'src/services/token.service';
+import { setUser } from './localStorage.service';
 
 export interface LoginPayload {
   username: string;
@@ -15,7 +16,8 @@ const login = async ({ username, password }: LoginPayload): Promise<Token> => {
     token: request.data.token,
     expiry: request.data.expiry,
   };
-  await setToken(token);
+  setToken(token);
+  setUser(username);
   return token;
 };
 

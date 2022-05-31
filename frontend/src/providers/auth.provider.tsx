@@ -3,7 +3,7 @@ import { AuthContext, initialAuthState } from 'src/contexts/auth.context';
 import authReducer from 'src/reducers/auth.reducer';
 
 type AuthProviderProps = {
-  children: React.ReactNode,
+  children: React.ReactNode;
 };
 
 const AuthProvider = ({ children }: AuthProviderProps): JSX.Element => {

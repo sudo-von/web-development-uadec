@@ -1,20 +1,21 @@
+import moment from 'moment-timezone';
+
 export interface Token {
   token: string;
   expiry: string;
 }
 
 const getToken = (): Token | null => {
-  try {
-    const token = localStorage.getItem('token');
-    const expiry = localStorage.getItem('expiry');
-    const result: Token = {
-      token: token ?? '',
-      expiry: expiry ?? '',
-    };
-    return result;
-  } catch (e) {
-    throw new Error('Ha ocurrido un error al intentar obtener tu token');
+  const token = localStorage.getItem('token');
+  const expiry = localStorage.getItem('expiry');
+  if (!token && !expiry) {
+    return null;
   }
+  const result: Token = {
+    token: token ?? '',
+    expiry: expiry ?? '',
+  };
+  return result;
 };
 
 const setToken = (token: Token): void => {
@@ -27,4 +28,15 @@ const deleteToken = (): void => {
   localStorage.removeItem('expiry');
 };
 
-export { getToken, setToken, deleteToken };
+const isTokenExpired = (): boolean => {
+  const token = getToken();
+  if (!token) {
+    return true;
+  }
+  const expiry = token.expiry;
+  const expiryDate = moment(expiry, 'YYYY-MM-DDTHH:mm').utc();
+  const currentDate = moment();
+  return expiryDate.isBefore(currentDate);
+};
+
+export { getToken, setToken, deleteToken, isTokenExpired };
