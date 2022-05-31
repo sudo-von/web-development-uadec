@@ -47,8 +47,8 @@ const QualityPolicies = () => {
         style={styles.container}
       >
         <h2 style={styles.title}>
-          La política de calidad de Grupo Sociedad Azucarera Larios se resume en
-          los puntos siguientes:
+          La política de calidad de Bienes raices multicasa se resume en los
+          puntos siguientes:
         </h2>
         <ol style={styles.paragraph}>
           <li>Confianza en nuestra marca.</li>
