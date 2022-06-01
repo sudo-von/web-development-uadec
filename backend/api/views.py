@@ -189,7 +189,7 @@ def cityDetail(request,pk):
 #///////////////////GET THE DATA OF THE SELECTED CITY ONLY////////////////////
 @api_view(['GET'])
 def cityByState(request,pk):
-    cities=City.objects.get(IdState=pk)
+    cities=City.objects.all().filter(IdState=pk)
     serializer=citySerializer(cities,many=True)
     return Response(serializer.data)
 
