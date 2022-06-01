@@ -59,7 +59,7 @@ const LeftSide = () => {
       />
       <ul style={styles.ulContainer}>
         {leftLinks.map(({ text, route }, i) => (
-          <Link to={route} style={styles.link}>
+          <Link key={`${text}-${route}`} to={route} style={styles.link}>
             <li style={styles.li}>{text}</li>
             {i !== leftLinks.length - 1 && isLarge && (
               <span style={styles.dot}>:</span>

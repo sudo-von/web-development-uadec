@@ -31,7 +31,7 @@ class stateSerializer(serializers.ModelSerializer):
 
 class citySerializer(serializers.ModelSerializer):
     class Meta:
-        model=House
+        model=City
         fields = '__all__'
         
 class houseSerializer(serializers.ModelSerializer):
