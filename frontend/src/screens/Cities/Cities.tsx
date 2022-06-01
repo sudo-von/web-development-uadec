@@ -51,7 +51,7 @@ const Cities = (): JSX.Element => {
         style={styles.container}
       >
         <DataTable
-          title="Estados"
+          title="Ciudades"
           pagination
           columns={columns}
           data={allCities}

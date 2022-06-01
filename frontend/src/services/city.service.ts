@@ -12,12 +12,12 @@ export interface CityPayload {
 }
 
 const getCities = async (stateId: string): Promise<City[]> => {
-  const request = await client.get<City[]>(`/api/city-state/${stateId}`);
+  const request = await client.get<City[]>(`/api/city-state/${stateId}/`);
   return request.data;
 };
 
 const getAllCities = async (): Promise<City[]> => {
-  const request = await client.get<City[]>(`/api/city-list/`);
+  const request = await client.get<City[]>(`/api/city-list`);
   return request.data;
 };
 
