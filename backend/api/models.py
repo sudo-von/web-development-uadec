@@ -6,6 +6,10 @@ from django.contrib.auth.models import User
 class Model(models.Model):
     Description=models.CharField(max_length=250)
     
+class Counter(models.Model):
+    register=models.IntegerField()
+    Description=models.CharField(max_length=250)
+    
     
 class State(models.Model):
     Description=models.CharField(max_length=250)
