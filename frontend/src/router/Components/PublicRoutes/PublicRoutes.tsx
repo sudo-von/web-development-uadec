@@ -15,6 +15,7 @@ import Services from 'src/screens/Services/Services';
 import { RouteProps } from 'src/router/Router';
 import Moving from 'src/screens/Moving/Moving';
 import Build from 'src/screens/Build/Build';
+import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
 
 const routes: RouteProps[] = [
   {
@@ -87,7 +88,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/news/echo-houses',
-    element: <Home />,
+    element: <EchoHouses />,
   },
   {
     path: '/news/isste',
