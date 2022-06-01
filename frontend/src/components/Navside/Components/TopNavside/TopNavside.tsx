@@ -46,7 +46,10 @@ const TopNavside = () => {
       style={styles.container}
     >
       {buttons.map(({ text, route }) => (
-        <TransparentButton style={styles.transparentButton}>
+        <TransparentButton
+          key={`${text}-${route}`}
+          style={styles.transparentButton}
+        >
           <Link to={route} style={styles.link}>
             {text}
           </Link>

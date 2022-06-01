@@ -7,6 +7,21 @@ body {
   background-size:cover;
 }
 
-input::placeholder {
+input::placeholder, select {
   color: #5492b1;
+}
+
+.customSelect select {
+  background-color: #10476b;
+  border: 1px solid #183046;
+  width: 186px;
+  font-size: 11px;
+  font-family: Tahoma;
+}
+
+select {
+  background: url('../assets/fx_obj_sombras/arrow.jpg') no-repeat right #ddd;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
 }

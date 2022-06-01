@@ -13,6 +13,9 @@ import Tips from 'src/screens/Tips/Tips';
 import Iso from 'src/screens/Iso/Iso';
 import { RouteProps } from 'src/router/Router';
 import Logout from 'src/screens/Logout/Logout';
+import CreateHouse from 'src/screens/CreateHouse/CreateHouse';
+import CreateState from 'src/screens/CreateState/CreateState';
+import CreateCity from 'src/screens/CreateCity/CreateCity';
 
 const routes: RouteProps[] = [
   {
@@ -96,6 +99,18 @@ const routes: RouteProps[] = [
     element: <Logout />,
   },
   {
+    path: '/create-house',
+    element: <CreateHouse />,
+  },
+  {
+    path: '/create-state',
+    element: <CreateState />,
+  },
+  {
+    path: '/create-city',
+    element: <CreateCity />,
+  },
+  {
     path: '*',
     element: <Navigate to="/" replace />,
   },
@@ -105,7 +120,7 @@ const ProtectedRoutes = (): JSX.Element => {
   return (
     <Routes>
       {routes.map((route) => (
-        <Route path={route.path} element={route.element} />
+        <Route key={route.path} path={route.path} element={route.element} />
       ))}
     </Routes>
   );

@@ -6,12 +6,12 @@ import Container from 'src/components/Container/Container';
 import { Link } from 'react-router-dom';
 import { useAuth } from 'src/contexts/auth.context';
 
-type LeftButton = {
+type MenuButton = {
   text: string;
   route: string;
 };
 
-const leftButtons: LeftButton[] = [
+const userButtons: MenuButton[] = [
   {
     text: 'Inicio',
     route: '/',
@@ -34,11 +34,39 @@ const leftButtons: LeftButton[] = [
   },
 ];
 
+const adminButtons: MenuButton[] = [
+  {
+    text: 'Inicio',
+    route: '/',
+  },
+  {
+    text: 'Registrar casa',
+    route: '/create-house',
+  },
+  {
+    text: 'Registrar estado',
+    route: '/create-state',
+  },
+  {
+    text: 'Registrar ciudad',
+    route: '/create-city',
+  },
+  {
+    text: 'Ver ciudades',
+    route: '/cities',
+  },
+  {
+    text: 'Ver estados',
+    route: '/states',
+  },
+];
+
 const Menu = () => {
   const { authState } = useAuth();
   const { isLoggedIn } = authState;
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
+  const buttons = isLoggedIn ? adminButtons : userButtons;
   return (
     <Container
       flexDirection={isLarge ? 'row' : 'column'}
@@ -49,8 +77,8 @@ const Menu = () => {
         style={styles.leftMenu}
         justifyContent={isLarge ? 'flex-start' : 'center'}
       >
-        {leftButtons.map(({ text, route }) => (
-          <Button style={styles.button}>
+        {buttons.map(({ text, route }) => (
+          <Button key={`${text}-${route}`} style={styles.button}>
             <Link to={route} style={styles.link}>
               {text}
             </Link>
