@@ -77,7 +77,7 @@ const CreateCity = (): JSX.Element => {
             />
           </div>
           <div style={styles.inputContainer}>
-            <p style={styles.label}>Descripción de laciudad</p>
+            <p style={styles.label}>Descripción de la ciudad</p>
             <Input
               id="description"
               name="description"
