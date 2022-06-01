@@ -13,6 +13,11 @@ import Tips from 'src/screens/Tips/Tips';
 import Iso from 'src/screens/Iso/Iso';
 import Services from 'src/screens/Services/Services';
 import { RouteProps } from 'src/router/Router';
+import Moving from 'src/screens/Moving/Moving';
+import Build from 'src/screens/Build/Build';
+import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
+import Isste from 'src/screens/Isste/Isste';
+import Foreign from 'src/screens/Foreing/Foreing';
 
 const routes: RouteProps[] = [
   {
@@ -49,7 +54,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/build',
-    element: <Home />,
+    element: <Build />,
   },
   {
     path: '/sale',
@@ -57,7 +62,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/moving',
-    element: <Home />,
+    element: <Moving />,
   },
   {
     path: '/insurance',
@@ -85,15 +90,15 @@ const routes: RouteProps[] = [
   },
   {
     path: '/news/echo-houses',
-    element: <Home />,
+    element: <EchoHouses />,
   },
   {
     path: '/news/isste',
-    element: <Home />,
+    element: <Isste />,
   },
   {
     path: '/news/foreign',
-    element: <Home />,
+    element: <Foreign />,
   },
   {
     path: '*',
