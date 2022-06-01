@@ -18,4 +18,8 @@ const postState = async (statePayload: StatePayload): Promise<void> => {
   await client.post<StatePayload[]>('/api/state-create/', statePayload);
 };
 
-export { getStates, postState };
+const deleteState = async (stateId: string): Promise<void> => {
+  await client.delete(`/api/state-delete/${stateId}/`);
+};
+
+export { getStates, postState, deleteState };

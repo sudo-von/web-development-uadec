@@ -16,6 +16,8 @@ import Logout from 'src/screens/Logout/Logout';
 import CreateHouse from 'src/screens/CreateHouse/CreateHouse';
 import CreateState from 'src/screens/CreateState/CreateState';
 import CreateCity from 'src/screens/CreateCity/CreateCity';
+import States from 'src/screens/States/States';
+import Cities from 'src/screens/Cities/Cities';
 
 const routes: RouteProps[] = [
   {
@@ -109,6 +111,14 @@ const routes: RouteProps[] = [
   {
     path: '/create-city',
     element: <CreateCity />,
+  },
+  {
+    path: '/states',
+    element: <States />,
+  },
+  {
+    path: '/cities',
+    element: <Cities />,
   },
   {
     path: '*',
