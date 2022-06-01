@@ -30,6 +30,7 @@ urlpatterns = [
     path('house-create/', views.houseCreate, name='createHouse'),
     path('house-update/<str:pk>/', views.houseUpdate, name='updateHouse'),
     path('house-delete/<str:pk>/', views.houseDelete, name='deleteHouse'),
+    path('house-report', views.casas_pdf, name='reportHouses'),
     path('register', RegisterAPI.as_view(), name='register'),
     path('login', LoginAPI.as_view(), name='login'),
     path('logout', knox_views.LogoutView.as_view(), name='logout'),

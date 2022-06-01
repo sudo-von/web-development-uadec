@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 from django.shortcuts import render
 
@@ -23,6 +24,15 @@ from knox.auth import TokenAuthentication
 from .serializers import *
 from rest_framework import generics
 from rest_framework.filters import SearchFilter,OrderingFilter
+
+from django.http import FileResponse
+import io
+from reportlab import cmp
+from reportlab.lib import colors, pagesizes
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import letter
+from reportlab.platypus.tables import Table, TableStyle
 
 from rest_framework.parsers import MultiPartParser, FormParser
 # Create your views here.
@@ -276,7 +286,7 @@ def houseCreate(request):
     
     if serializer.is_valid():
         serializer.save()
-        
+    serializer.save()
     return Response(serializer.data)
 
 #///////////////UPDATE  HOUSE INFORMATION////////////////////
@@ -329,3 +339,42 @@ def registryCreate(request):
     }
         
     return Response(finalCount)
+
+#///////////////////////REPORTE LISTADO GENERAL DE CASAS/////////////////////////////
+def casas_pdf(request):
+    buf=io.BytesIO()
+    casas=House.objects.all()
+    listaCasas=list(casas.values_list("Description","Price","Rooms","Baths","IdState","IdCity","CP","is_sold"))
+    c=canvas.Canvas(buf,pagesize=letter, bottomup=0) #SE DA FORMATO DE HOJA (TIPO CARTA, ETC)
+
+    
+    #////////FORMATO DE LETRA A TITULOS/////////////
+    c.setFont("Helvetica",35)
+    c.drawCentredString(280,50,"Multicasas: Reporte General")
+    c.setFont("Helvetica",16)
+    c.drawCentredString(300,150,"Listado General de casas")
+    
+    #//////SE DEFINEN LOS ENCABEZADOS DE LAS COLUMNAS
+    encabezados=('Descripcion','Precio','Cuartos','Baños','Estado','Ciudad','C.P.','Vendida')
+    detalles=[['123456','matematicas','90','0'],['123456','quimica','80','0'],['123456','programacion 1','90','0']] #REEMPLAZAR ESTOS DATOS POR DATOS DEL MODELO DEL ESTUDIANTE
+    detalle_orden=Table(listaCasas+[encabezados],colWidths=[100,60,50,40,50,50,40,60,40]) # //// FORMATO A LAS COLUMNAS DEL REPORTE
+    detalle_orden.setStyle(TableStyle([
+        ('ALIGN',(0,0),(0,0),'CENTER'),
+        ('GRID',(0,0),(-1,-1),1,colors.black),
+        ('FONTSIZE',(0,0),(-1,-1),9),
+    ]))
+    
+    detalle_orden.wrapOn(c,500,350)
+    detalle_orden.drawOn(c,70,200)
+    
+    fechaactual=datetime.now()
+    
+    #FORMATO A DATOS PERSONALES, FALTA AGREGAR ESE DATO DIRECTAMENTE DEL MODELO DEL ALUMNO
+    c.setFont("Helvetica",10)
+    c.drawCentredString(300,650,"Listado general de casas en venta/vendidas a fecha: "+str(fechaactual))
+    
+    c.showPage()
+    c.save()
+    buf.seek(0)
+    
+    return FileResponse(buf,as_attachment=True,filename='listadoGeneral.pdf') #////////SE IMPRIME EL REPORTE AL LLAMAR A LA VIST
