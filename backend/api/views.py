@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render
 
 from .models import *
@@ -11,6 +12,8 @@ from knox.views import LoginView as KnoxLoginView
 from rest_framework.decorators import api_view, authentication_classes, permission_classes, parser_classes
 from rest_framework.response import Response
 
+from django.http import JsonResponse
+
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -18,6 +21,8 @@ from rest_framework import generics, permissions
 from knox.models import AuthToken
 from knox.auth import TokenAuthentication
 from .serializers import *
+from rest_framework import generics
+from rest_framework.filters import SearchFilter,OrderingFilter
 
 from rest_framework.parsers import MultiPartParser, FormParser
 # Create your views here.
@@ -74,6 +79,7 @@ def stateDetail(request,pk):
     states=State.objects.get(id=pk)
     serializer=stateSerializer(states,many=False)
     return Response(serializer.data)
+
 
 #//////////////CREATE NEW STATE/////////////////////////////////////////
 @api_view(['POST'])
@@ -180,6 +186,13 @@ def cityDetail(request,pk):
     serializer=citySerializer(cities,many=False)
     return Response(serializer.data)
 
+#///////////////////GET THE DATA OF THE SELECTED CITY ONLY////////////////////
+@api_view(['GET'])
+def cityByState(request,pk):
+    cities=City.objects.get(IdState=pk)
+    serializer=citySerializer(cities,many=True)
+    return Response(serializer.data)
+
 #//////////////CREATE NEW CITY/////////////////////////////////////////
 @api_view(['POST'])
 @authentication_classes([TokenAuthentication])
@@ -232,6 +245,27 @@ def houseDetail(request,pk):
     serializer=houseSerializer(houses,many=False)
     return Response(serializer.data)
 
+#///GET A LIST OF OBJECTS TYPE HOUSE BY MODEL IN A JSON //////////////////////////////
+@api_view(['GET'])
+def houseByModel(request,pk):
+    houses=House.objects.get(IdModel=pk)
+    serializer=houseSerializer(houses,many=True)
+    return Response(serializer.data)
+
+#///GET A LIST OF OBJECTS TYPE HOUSE BY CITY IN A JSON //////////////////////////////
+@api_view(['GET'])
+def houseByCity(request,pk):
+    houses=House.objects.get(IdCity=pk)
+    serializer=houseSerializer(houses,many=True)
+    return Response(serializer.data)
+
+#///GET A LIST OF OBJECTS TYPE HOUSE BY State IN A JSON //////////////////////////////
+@api_view(['GET'])
+def houseByState(request,pk):
+    houses=House.objects.get(IdState=pk)
+    serializer=houseSerializer(houses,many=True)
+    return Response(serializer.data)
+
 #//////////////CREATE NEW HOUSE/////////////////////////////////////////
 @api_view(['POST'])
 @parser_classes([MultiPartParser,FormParser])
@@ -267,3 +301,31 @@ def houseDelete(request,pk):
     houses.delete()
     
     return Response("Registro eliminado")
+
+
+#//////////////CREATE NEW COUNT REGISTRY/////////////////////////////////////////
+@api_view(['GET'])
+def registryCount(request):
+    viewsCount=Counter.objects.all()
+    serializer=registrySerializer(viewsCount,many=True)
+    return Response(serializer.data)
+
+#//////////////CREATE NEW Registry/////////////////////////////////////////
+@api_view(['POST'])
+def registryCreate(request):
+    dumb={
+        "register": 1,
+        "Description": 'dump register',
+    }
+    serializer=registrySerializer(data=dumb)
+    
+    if serializer.is_valid():
+        serializer.save()
+        
+    total=len(Counter)
+    
+    finalCount={
+        "total": total,
+    }
+        
+    return Response(finalCount)
