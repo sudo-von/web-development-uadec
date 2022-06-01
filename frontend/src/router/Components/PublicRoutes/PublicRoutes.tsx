@@ -16,6 +16,7 @@ import { RouteProps } from 'src/router/Router';
 import Moving from 'src/screens/Moving/Moving';
 import Build from 'src/screens/Build/Build';
 import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
+import Isste from 'src/screens/Isste/Isste';
 
 const routes: RouteProps[] = [
   {
@@ -92,7 +93,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/news/isste',
-    element: <Home />,
+    element: <Isste />,
   },
   {
     path: '/news/foreign',
