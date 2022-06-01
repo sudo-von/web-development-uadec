@@ -17,6 +17,7 @@ import Moving from 'src/screens/Moving/Moving';
 import Build from 'src/screens/Build/Build';
 import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
 import Isste from 'src/screens/Isste/Isste';
+import Foreign from 'src/screens/Foreing/Foreing';
 
 const routes: RouteProps[] = [
   {
@@ -97,7 +98,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/news/foreign',
-    element: <Home />,
+    element: <Foreign />,
   },
   {
     path: '*',
