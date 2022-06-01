@@ -38,3 +38,8 @@ class houseSerializer(serializers.ModelSerializer):
     class Meta:
         model=House
         fields = '__all__'
+        
+class registrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Counter
+        fields = '__all__'
