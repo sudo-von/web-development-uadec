@@ -104,12 +104,12 @@ def stateCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE A STATE INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def stateUpdate(request,pk):
     states=State.objects.get(id=pk)
-    serializar=stateSerializer(instance=State,data=request.data)
+    serializar=stateSerializer(instance=states,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -156,12 +156,12 @@ def modelCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE MODEL INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def modelUpdate(request,pk):
     models=Model.objects.get(id=pk)
-    serializar=modelSerializer(instance=Model,data=request.data)
+    serializar=modelSerializer(instance=models,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -216,12 +216,12 @@ def cityCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE  CITY INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def cityUpdate(request,pk):
     cities=City.objects.get(id=pk)
-    serializar=citySerializer(instance=City,data=request.data)
+    serializar=citySerializer(instance=cities,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -290,12 +290,12 @@ def houseCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE  HOUSE INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def houseUpdate(request,pk):
     houses=House.objects.get(id=pk)
-    serializar=houseSerializer(instance=House,data=request.data)
+    serializar=houseSerializer(instance=houses,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
