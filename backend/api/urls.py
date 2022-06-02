@@ -4,6 +4,9 @@ from . import views
 from knox import views as knox_views
 from .views import LoginAPI
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', views.apiTest, name='testapi'),
     path('state-list', views.stateList, name='listStates'),
