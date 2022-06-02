@@ -25,6 +25,7 @@ import Moving from 'src/screens/Moving/Moving';
 import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
 import Isste from 'src/screens/Isste/Isste';
 import Foreign from 'src/screens/Foreing/Foreing';
+import Insurance from 'src/screens/Insurance/Insurance';
 
 const routes: RouteProps[] = [
   {
@@ -69,7 +70,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/insurance',
-    element: <Home />,
+    element: <Insurance />,
   },
   {
     path: '/privacy-policies',
