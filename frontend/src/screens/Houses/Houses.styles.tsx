@@ -1,42 +1,23 @@
 const handleStyles = (isLarge: boolean) =>
   ({
+    homeContainer: {
+      width: isLarge ? 1002 : '100%',
+    },
     container: {
-      padding: 20,
+      background: '#3d6492',
+      width: isLarge ? 1002 : '80%',
     },
-    title: {
-      fontWeight: 'bold',
-      color: '#10476b',
-      textAlign: 'center',
-    },
-    label: {
-      color: '#10476b',
-      fontFamily: 'Tahoma',
-      fontSize: 18,
-      fontWeight: 'bold',
-      textAlign: 'left',
-    },
-    inputContainer: {
-      marginTop: 11,
-    },
-    input: {
-      height: 30,
-      backgroundImage:
-        'url(/assets/fx_obj_sombras/arrow.jpg) no-repeat right #ddd',
-      backgroundSize: 30,
-      width: isLarge ? 600 : 350,
-      paddingLeft: 10,
-      fontSize: 14,
-    },
-    button: {
-      marginTop: 25,
-    },
-    formContainer: {
+    contentContainer: {
       width: '100%',
-      background: 'green',
+      display: 'flex',
+      justifyContent: 'flex-start',
     },
-    buttonContainer: {
-      marginTop: 40,
-      marginBottom: 20,
+    blackLine: {
+      margin: 0,
+      padding: 0,
+      borderTop: '1px solid black',
+      borderBottom: '2px solid black',
+      width: isLarge ? '100%' : '80%',
     },
   } as const);
 

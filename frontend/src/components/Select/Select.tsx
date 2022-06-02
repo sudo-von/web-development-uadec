@@ -11,7 +11,7 @@ interface InputProps {
   style?: object;
   name?: string;
   options: Option[];
-  defaultOption: string;
+  defaultOption?: string;
 }
 
 const Select = ({
@@ -32,9 +32,11 @@ const Select = ({
         onChange={onChange}
         defaultValue={0}
       >
-        <option disabled value={0}>
-          {defaultOption}
-        </option>
+        {defaultOption && (
+          <option disabled value={0}>
+            {defaultOption}
+          </option>
+        )}
         {options.map(({ key, value }) => (
           <option key={`${key}-${value}`} value={value}>
             {key}
