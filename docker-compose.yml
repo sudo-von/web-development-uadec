@@ -46,15 +46,4 @@ services:
       - database
     links:
       - database
-  frontend:
-    container_name: web_development_uadec_frontend
-    build:
-      context: frontend/.
-    volumes:
-      - ./frontend:/app
-    ports:
-      - 80:3000
-    links:
-      - backend
-    depends_on:
-      - backend
+
