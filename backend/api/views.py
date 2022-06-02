@@ -17,6 +17,7 @@ from rest_framework.response import Response
 
 from django.http import JsonResponse
 from reportlab.platypus.flowables import Image
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 from rest_framework.permissions import IsAuthenticated
@@ -250,7 +251,37 @@ def cityDelete(request,pk):
 def houseList(request):
     houses=House.objects.all()
     serializer=houseSerializer(houses,many=True)
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = {
+        'Baths': ["exact"], # note the 'in' field
+        'Rooms': ["in"]
+    }
     return Response(serializer.data)
+
+class houseListCustom(APIView):
+    
+    def get(self,request,*args,**kwargs):
+        queryset=House.objects.all()
+        
+        baths=self.request.query_params.get('baths',None)
+        rooms=self.request.query_params.get('rooms',None)
+        pinicial=self.request.query_params.get('pinicial',None)
+        pfinal=self.request.query_params.get('pfinal',None)
+        
+        if baths:
+            queryset=queryset.filter(Baths=baths)
+            
+        if rooms:
+            queryset=queryset.filter(Rooms=rooms)
+            
+        if pinicial:
+            queryset=queryset.filter(Price__gte=pinicial)
+            
+        if pfinal:
+            queryset=queryset.filter(Price__lte=pfinal)
+            
+        serializer=houseSerializer(queryset,many=True)
+        return Response(serializer.data)
 
 #///////////////////GET THE DATA OF THE SELECTED HOUSE ONLY////////////////////
 @api_view(['GET'])
