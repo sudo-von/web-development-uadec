@@ -89,7 +89,11 @@ DATABASES = {
         'USER': 'user',  
         'PASSWORD': 'password',  
         'HOST': 'web_development_uadec_database',  
-        'PORT': '3306',  
+        'PORT': '3306',
+        'TEST': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'test_unitdatabase',  
+        },
         'OPTIONS': {  
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }  

@@ -497,3 +497,57 @@ def casa_info_pdf(request,pk):
     buf.seek(0)
     
     return FileResponse(buf,as_attachment=True,filename='detallesCasa.pdf')#////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
+
+
+
+#////////////////////////////////////////////////API VIEWS FOR Contact//////////////////////////////////////////////
+
+#///GET A LIST OF OBJECTS TYPE CONTACT IN A JSON //////////////////////////////
+@api_view(['GET'])
+def contactList(request):
+    contacts=Contact.objects.all()
+    serializer=contactSerializer(contacts,many=True)
+    return Response(serializer.data)
+
+#///////////////////GET THE DATA OF THE SELECTED CONTACT ONLY////////////////////
+@api_view(['GET'])
+def contactDetail(request,pk):
+    contacts=Contact.objects.get(id=pk)
+    serializer=contactSerializer(contacts,many=False)
+    return Response(serializer.data)
+
+
+#//////////////CREATE NEW CONTACT/////////////////////////////////////////
+@api_view(['POST'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def contactCreate(request):
+    serializer=contactSerializer(data=request.data)
+    
+    if serializer.is_valid():
+        serializer.save()
+        
+    return Response(serializer.data)
+
+#///////////////UPDATE A CONTACT INFORMATION////////////////////
+@api_view(['PATCH'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def contactUpdate(request,pk):
+    contacts=Contact.objects.get(id=pk)
+    serializar=contactSerializer(instance=contacts,data=request.data)
+    
+    if serializar.is_valid():
+        serializar.save()
+        
+    return Response(serializar.data)
+
+#/////////////DELETE A CONTACT BY IT ID/////////////////////////
+@api_view(['DELETE'])
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
+def contactDelete(request,pk):
+    contacts=Contact.objects.get(id=pk)
+    contacts.delete()
+    
+    return Response("Registro eliminado")

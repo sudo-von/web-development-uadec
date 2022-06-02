@@ -30,3 +30,8 @@ class House(models.Model):
     is_sold=models.BooleanField(default=False)
     house_image=models.ImageField(upload_to=upload_to, blank=True, null=True)
     location=models.CharField(max_length=450,null=True)
+    
+class Contact(models.Model):
+    Name=models.CharField(max_length=250)
+    Email=models.CharField(max_length=250)
+    Msg=models.CharField(max_length=250)
