@@ -263,10 +263,29 @@ class houseListCustom(APIView):
     def get(self,request,*args,**kwargs):
         queryset=House.objects.all()
         
+        ciud=City.objects.all()
+        est=State.objects.all()
+        
         baths=self.request.query_params.get('baths',None)
         rooms=self.request.query_params.get('rooms',None)
         pinicial=self.request.query_params.get('pinicial',None)
         pfinal=self.request.query_params.get('pfinal',None)
+        
+        cpcs=self.request.query_params.get('cpcs',None)
+
+        if cpcs:
+            ciud=ciud.filter(Description__icontains=cpcs)
+            if not ciud:
+                est=est.filter(Description__icontains=cpcs)
+                if not est:
+                    queryset=queryset.filter(CP__icontains=cpcs)
+                else:
+                    liststat=list(est.values_list())
+                    queryset=queryset.filter(IdState=liststat[0][0])
+            else:
+                listciud=list(ciud.values_list())
+                queryset=queryset.filter(IdCity=listciud[0][0])
+            
         
         if baths:
             queryset=queryset.filter(Baths=baths)
