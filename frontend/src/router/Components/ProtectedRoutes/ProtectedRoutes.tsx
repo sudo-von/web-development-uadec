@@ -19,6 +19,13 @@ import CreateCity from 'src/screens/CreateCity/CreateCity';
 import States from 'src/screens/States/States';
 import Cities from 'src/screens/Cities/Cities';
 import UpdateState from 'src/screens/UpdateState/UpdateState';
+import Services from 'src/screens/Services/Services';
+import Build from 'src/screens/Build/Build';
+import Moving from 'src/screens/Moving/Moving';
+import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
+import Isste from 'src/screens/Isste/Isste';
+import Foreign from 'src/screens/Foreing/Foreing';
+import Insurance from 'src/screens/Insurance/Insurance';
 
 const routes: RouteProps[] = [
   {
@@ -31,7 +38,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/services',
-    element: <Home />,
+    element: <Services />,
   },
   {
     path: '/requirements',
@@ -51,7 +58,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/build',
-    element: <Home />,
+    element: <Build />,
   },
   {
     path: '/sale',
@@ -59,11 +66,11 @@ const routes: RouteProps[] = [
   },
   {
     path: '/moving',
-    element: <Home />,
+    element: <Moving />,
   },
   {
     path: '/insurance',
-    element: <Home />,
+    element: <Insurance />,
   },
   {
     path: '/privacy-policies',
@@ -87,15 +94,15 @@ const routes: RouteProps[] = [
   },
   {
     path: '/news/echo-houses',
-    element: <Home />,
+    element: <EchoHouses />,
   },
   {
     path: '/news/isste',
-    element: <Home />,
+    element: <Isste />,
   },
   {
     path: '/news/foreign',
-    element: <Home />,
+    element: <Foreign />,
   },
   {
     path: '/logout',
