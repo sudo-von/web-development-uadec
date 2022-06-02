@@ -197,3 +197,28 @@ class HouseTestCase(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
  
+
+class ContactTestCase(TestCase):
+    def setUp(self):
+        contacto = Contact(
+            Name='bryan',
+            Email='bryan@mail.com',
+            Msg='mensaje de prueba'
+        )
+        contacto.save()
+
+    def test_create_contact(self):
+        client = APIClient()
+        response = client.post(
+                '/api/contact-create/', {
+                'Name': 'pepito',
+                'Email': 'pepito@mail.com',
+                'Msg': 'probando mensajes a contacto'
+            },
+            format='json'
+        )
+        
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    
+        
