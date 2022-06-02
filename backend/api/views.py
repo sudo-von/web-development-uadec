@@ -519,8 +519,6 @@ def contactDetail(request,pk):
 
 #//////////////CREATE NEW CONTACT/////////////////////////////////////////
 @api_view(['POST'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
 def contactCreate(request):
     serializer=contactSerializer(data=request.data)
     
@@ -531,8 +529,6 @@ def contactCreate(request):
 
 #///////////////UPDATE A CONTACT INFORMATION////////////////////
 @api_view(['PATCH'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
 def contactUpdate(request,pk):
     contacts=Contact.objects.get(id=pk)
     serializar=contactSerializer(instance=contacts,data=request.data)
