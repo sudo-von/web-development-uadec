@@ -25,24 +25,15 @@ const Buy = () => {
           caracteristicas por ejemplo la cantidad de baños, Número de
           estacionamientos, Seguridad integrada o Cocina integaral.
         </p>
-        <table>
-          <tr>
-            <td>
-              <h3 style={styles.text}>
-                Bienes Raices Multicasa se encuentra en toda la República
-                Méxicana
-              </h3>
-            </td>
-            <td>
-              <Image
-                src="https://venturadistrict.com/wp-content/uploads/2020/08/Architecture-Vertical-pics-06-576x1024.jpg"
-                alt="Mission"
-                height={250}
-                width={250}
-              />
-            </td>
-          </tr>
-        </table>
+        <h3 style={styles.text}>
+          Bienes Raices Multicasa se encuentra en toda la República Méxicana
+        </h3>
+        <Image
+          src="https://venturadistrict.com/wp-content/uploads/2020/08/Architecture-Vertical-pics-06-576x1024.jpg"
+          alt="Mission"
+          height={250}
+          width={450}
+        />
       </Container>
     </Skeleton>
   );
