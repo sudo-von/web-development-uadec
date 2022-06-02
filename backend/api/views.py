@@ -6,6 +6,8 @@ from .models import *
 
 from django.contrib.auth import login
 
+from reportlab.lib.utils import ImageReader
+
 from rest_framework import permissions
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from knox.views import LoginView as KnoxLoginView
@@ -14,6 +16,8 @@ from rest_framework.decorators import api_view, authentication_classes, permissi
 from rest_framework.response import Response
 
 from django.http import JsonResponse
+from reportlab.platypus.flowables import Image
+
 
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -104,12 +108,12 @@ def stateCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE A STATE INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def stateUpdate(request,pk):
     states=State.objects.get(id=pk)
-    serializar=stateSerializer(instance=State,data=request.data)
+    serializar=stateSerializer(instance=states,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -156,12 +160,12 @@ def modelCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE MODEL INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def modelUpdate(request,pk):
     models=Model.objects.get(id=pk)
-    serializar=modelSerializer(instance=Model,data=request.data)
+    serializar=modelSerializer(instance=models,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -216,12 +220,12 @@ def cityCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE  CITY INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def cityUpdate(request,pk):
     cities=City.objects.get(id=pk)
-    serializar=citySerializer(instance=City,data=request.data)
+    serializar=citySerializer(instance=cities,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -290,12 +294,12 @@ def houseCreate(request):
     return Response(serializer.data)
 
 #///////////////UPDATE  HOUSE INFORMATION////////////////////
-@api_view(['POST'])
+@api_view(['PATCH'])
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def houseUpdate(request,pk):
     houses=House.objects.get(id=pk)
-    serializar=houseSerializer(instance=House,data=request.data)
+    serializar=houseSerializer(instance=houses,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -406,6 +410,10 @@ def casas_pdf(request):
     return FileResponse(buf,as_attachment=True,filename='listadoGeneral.pdf') #////////SE IMPRIME EL REPORTE AL LLAMAR A LA VIST
 
 
+
+
+
+
 #///////////////////////REPORTE LISTADO PARTICULAR DE CASAS/////////////////////////////
 @api_view(['GET'])
 def casa_info_pdf(request,pk):
@@ -442,19 +450,19 @@ def casa_info_pdf(request,pk):
     c.drawCentredString(300,170,str(listHouse[0][1]))
     
     c.setFont("Helvetica",16)
-    c.drawCentredString(100,250,"Modelo: ")
+    c.drawCentredString(150,250,"Modelo: ")
     c.setFont("Helvetica",14)
-    c.drawCentredString(100,270,str(modelo))
+    c.drawCentredString(150,270,str(modelo))
     
     c.setFont("Helvetica",16)
-    c.drawCentredString(100,300,"Habitaciones: ")
+    c.drawCentredString(300,250,"Habitaciones: ")
     c.setFont("Helvetica",14)
-    c.drawCentredString(100,320,str(listHouse[0][4]))
+    c.drawCentredString(300,270,str(listHouse[0][4]))
     
     c.setFont("Helvetica",16)
-    c.drawCentredString(100,350,"Baños: ")
+    c.drawCentredString(450,250,"Baños: ")
     c.setFont("Helvetica",14)
-    c.drawCentredString(100,370,str(listHouse[0][5]))
+    c.drawCentredString(450,270,str(listHouse[0][5]))
     
     c.setFont("Helvetica",16)
     c.drawCentredString(300,400,"Ubicacion: ")
@@ -462,22 +470,28 @@ def casa_info_pdf(request,pk):
     c.drawCentredString(300,420,str(listHouse[0][11]))
     
     c.setFont("Helvetica",16)
-    c.drawCentredString(100,450,"Estado: ")
+    c.drawCentredString(150,470,"Estado: ")
     c.setFont("Helvetica",14)
-    c.drawCentredString(100,470,str(estado))
+    c.drawCentredString(150,500,str(estado))
     
     c.setFont("Helvetica",16)
-    c.drawCentredString(100,500,"Ciudad: ")
+    c.drawCentredString(300,470,"Ciudad: ")
     c.setFont("Helvetica",14)
-    c.drawCentredString(100,520,str(ciudad))
+    c.drawCentredString(300,500,str(ciudad))
     
     c.setFont("Helvetica",16)
-    c.drawCentredString(100,550,"Codigo Postal: ")
+    c.drawCentredString(450,470,"Codigo Postal: ")
     c.setFont("Helvetica",14)
-    c.drawCentredString(100,570,str(listHouse[0][2]))
+    c.drawCentredString(450,500,str(listHouse[0][2]))
     
+    logo = ImageReader('https://i.ibb.co/jh8956J/casatest.jpg')
     
 
+    c.rotate(90)
+    
+    c.drawImage(logo, 0, 0,width=100,height=100, mask='auto')
+    
+    
     
     c.showPage()
     c.save()
