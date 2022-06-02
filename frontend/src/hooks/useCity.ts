@@ -4,14 +4,22 @@ import {
   City,
   deleteCity,
   getAllCities,
+  getCityByID,
 } from 'src/services/city.service';
-import { deleteState, getStates, State } from 'src/services/state.service';
+import {
+  deleteState,
+  getStateByID,
+  getStates,
+  State,
+} from 'src/services/state.service';
 import swal from 'sweetalert';
 
 const useCity = () => {
   const [states, setStates] = useState<State[]>([]);
   const [cities, setCities] = useState<City[]>([]);
   const [allCities, setAllCities] = useState<City[]>([]);
+  const [city, setCity] = useState<City>();
+  const [state, setState] = useState<State>();
 
   useEffect(() => {
     handleStates();
@@ -55,6 +63,26 @@ const useCity = () => {
     }
   };
 
+  const handleCityById = async (cityId: string) => {
+    try {
+      const cityResult = await getCityByID(cityId);
+      const stateResult = await getStateByID(cityResult.IdState);
+      setCity(cityResult);
+      setState(stateResult);
+    } catch (error) {
+      swal('', 'Ha ocurrido un error al cargar la  ciudad', 'error');
+    }
+  };
+
+  const handleStateById = async (stateId: string) => {
+    try {
+      const result = await getStateByID(stateId);
+      setState(result);
+    } catch (error) {
+      swal('', 'Ha ocurrido un error al cargar el estado', 'error');
+    }
+  };
+
   const handleAllCities = async () => {
     try {
       const citiesResult = await getAllCities();
@@ -72,6 +100,12 @@ const useCity = () => {
     handleDeleteState,
     handleDeleteCity,
     handleAllCities,
+    city,
+    setCity,
+    state,
+    setState,
+    handleCityById,
+    handleStateById,
   };
 };
 

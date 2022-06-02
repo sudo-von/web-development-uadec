@@ -6,10 +6,12 @@ import handleStyles from './States.styles';
 import DataTable, { TableColumn } from 'react-data-table-component';
 import useCity from 'src/hooks/useCity';
 import Button from 'src/components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const States = (): JSX.Element => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
+  const navigate = useNavigate();
 
   const { states, handleDeleteState } = useCity();
   const columns: TableColumn<State>[] = [
@@ -20,7 +22,9 @@ const States = (): JSX.Element => {
     },
     {
       cell: (row) => (
-        <Button onClick={() => handleDeleteState(row.id)}>Editar</Button>
+        <Button onClick={() => navigate(`/update-state/${row.id}`)}>
+          Editar
+        </Button>
       ),
       ignoreRowClick: true,
       allowOverflow: true,
@@ -44,13 +48,7 @@ const States = (): JSX.Element => {
         alignItems="center"
         style={styles.container}
       >
-        <DataTable
-          title="Estados"
-          pagination
-          columns={columns}
-          data={states}
-          selectableRows
-        />
+        <DataTable title="Estados" pagination columns={columns} data={states} />
       </Container>
     </Skeleton>
   );

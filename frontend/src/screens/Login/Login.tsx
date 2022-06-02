@@ -77,7 +77,7 @@ const Login = () => {
             />
           </div>
           <Container justifyContent="center" style={styles.buttonContainer}>
-            <Button onClick={handleSubmit}>Enviar sugerencia</Button>
+            <Button onClick={handleSubmit}>Iniciar sesión</Button>
           </Container>
         </form>
       </Container>
