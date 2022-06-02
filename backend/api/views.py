@@ -1,4 +1,5 @@
 from datetime import datetime
+from itertools import count
 import json
 from django.shortcuts import render
 
@@ -266,6 +267,21 @@ def houseDetail(request,pk):
     serializer=houseSerializer(houses,many=False)
     return Response(serializer.data)
 
+#///////////////////GET THE DATA OF THE SELECTED HOUSE ONLY////////////////////
+@api_view(['GET'])
+def houseCountSold(request,pk):
+    vendido=False
+    if pk=='1':
+        vendido=True
+    
+    houses=House.objects.all().filter(is_sold=vendido)
+    
+    listaVenta=list(houses.values_list())
+    print(listaVenta)
+    contar=len(listaVenta)
+    
+    return Response(contar)
+
 #///GET A LIST OF OBJECTS TYPE HOUSE BY MODEL IN A JSON //////////////////////////////
 @api_view(['GET'])
 def houseByModel(request,pk):
@@ -519,8 +535,6 @@ def contactDetail(request,pk):
 
 #//////////////CREATE NEW CONTACT/////////////////////////////////////////
 @api_view(['POST'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
 def contactCreate(request):
     serializer=contactSerializer(data=request.data)
     
@@ -531,8 +545,6 @@ def contactCreate(request):
 
 #///////////////UPDATE A CONTACT INFORMATION////////////////////
 @api_view(['PATCH'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
 def contactUpdate(request,pk):
     contacts=Contact.objects.get(id=pk)
     serializar=contactSerializer(instance=contacts,data=request.data)
