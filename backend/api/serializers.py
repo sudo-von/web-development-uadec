@@ -34,7 +34,7 @@ class houseSerializer(serializers.ModelSerializer):
     estado_name=stateSerializer()
     class Meta:
         model=House
-        fields = '__all__'
+        fields = ('Description','CP','Price','Rooms','Baths','ciudad_name','estado_name','is_sold','house_image','location')
         
 class registrySerializer(serializers.ModelSerializer):
     class Meta:
