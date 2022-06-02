@@ -42,3 +42,8 @@ class registrySerializer(serializers.ModelSerializer):
     class Meta:
         model=Counter
         fields = '__all__'
+        
+class contactSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Contact
+        fields = '__all__'

@@ -34,4 +34,9 @@ urlpatterns = [
     path('login', LoginAPI.as_view(), name='login'),
     path('logout', knox_views.LogoutView.as_view(), name='logout'),
     path('logoutall', knox_views.LogoutAllView.as_view(), name='logoutall'),
+    path('contact-list', views.contactList, name='listContacts'),
+    path('contact-detail/<str:pk>/', views.contactDetail, name='detailContact'),
+    path('contact-create/', views.contactCreate, name='createContact'),
+    path('contact-update/<str:pk>/', views.contactUpdate, name='updateContact'),
+    path('contact-delete/<str:pk>/', views.contactDelete, name='deleteContact'),
 ]
