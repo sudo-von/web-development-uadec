@@ -1,11 +1,11 @@
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import Company from 'src/screens/Company/Company';
 import Home from 'src/screens/Home/Home';
 import Requirements from 'src/screens/Requirements/Requirements';
 import Sale from 'src/screens/Sale/Sale';
 import Buy from 'src/screens/Buy/Buy';
 import Contact from 'src/screens/Contact/Contact';
-import Login from 'src/screens/Login/Login';
+import UpdateCity from 'src/screens/UpdateCity/UpdateCity';
 import PrivacyPolicies from 'src/screens/PrivacyPolicies/PrivacyPolicies';
 import QualityPolicies from 'src/screens/QualityPolicies/QualityPolicies';
 import FrequentQuestions from 'src/screens/FrequentQuestions/FrequentQuestions';
@@ -18,6 +18,7 @@ import CreateState from 'src/screens/CreateState/CreateState';
 import CreateCity from 'src/screens/CreateCity/CreateCity';
 import States from 'src/screens/States/States';
 import Cities from 'src/screens/Cities/Cities';
+import UpdateState from 'src/screens/UpdateState/UpdateState';
 
 const routes: RouteProps[] = [
   {
@@ -119,6 +120,14 @@ const routes: RouteProps[] = [
   {
     path: '/cities',
     element: <Cities />,
+  },
+  {
+    path: '/update-city/:id',
+    element: <UpdateCity />,
+  },
+  {
+    path: '/update-state/:id',
+    element: <UpdateState />,
   },
   {
     path: '*',

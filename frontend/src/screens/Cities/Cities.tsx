@@ -7,10 +7,12 @@ import useCity from 'src/hooks/useCity';
 import Button from 'src/components/Button/Button';
 import { City } from 'src/services/city.service';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Cities = (): JSX.Element => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
+  const navigate = useNavigate();
 
   const { allCities, handleAllCities, handleDeleteCity } = useCity();
 
@@ -26,7 +28,9 @@ const Cities = (): JSX.Element => {
     },
     {
       cell: (row) => (
-        <Button onClick={() => handleDeleteCity(row.id)}>Editar</Button>
+        <Button onClick={() => navigate(`/update-city/${row.id}`)}>
+          Editar
+        </Button>
       ),
       ignoreRowClick: true,
       allowOverflow: true,
@@ -51,11 +55,10 @@ const Cities = (): JSX.Element => {
         style={styles.container}
       >
         <DataTable
-          title="Estados"
+          title="Ciudades"
           pagination
           columns={columns}
           data={allCities}
-          selectableRows
         />
       </Container>
     </Skeleton>
