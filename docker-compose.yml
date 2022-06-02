@@ -8,8 +8,8 @@ services:
     volumes:
       - ./backend:/backend
     command: >
-      sh -c "python manage.py makemigrations &&
-             python manage.py migrate &&
+      sh -c "python manage.py makemigrations api &&
+             python manage.py migrate api &&
              python manage.py runserver 0.0.0.0:5000"
     ports:
       - "5000:5000"

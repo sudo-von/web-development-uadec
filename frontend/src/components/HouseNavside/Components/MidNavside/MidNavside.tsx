@@ -8,6 +8,7 @@ import useMediaQuery from 'src/hooks/useMediaQuery';
 import handleStyles from './MidNavside.styles';
 import { useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
+import { deleteHouse } from 'src/services/house.service';
 
 export interface Filters {
   baths: string;
@@ -18,7 +19,7 @@ export interface Filters {
   cpcs: string;
 }
 
-const MidNavside = () => {
+const MidNavside = ({ onClick }: { onClick: () => Promise<void> }) => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
   const [filters, setFilters] = useState<Filters>({
@@ -170,7 +171,8 @@ const MidNavside = () => {
         let str = Object.entries(filters)
           .map(([key, val]) => `${key}=${val}`)
           .join('&');
-        navigate('/search?' + str);
+        window.location.search = str;
+        await onClick();
       }
     } catch (error) {
       swal('Ha ocurrido un error', 'Contacta al administrador', 'error');
@@ -224,24 +226,34 @@ const MidNavside = () => {
               options={range}
             />
           </div>
-          <div style={styles.inputContainer}>
+          <div style={styles.crossInputContainer}>
             <label style={styles.label} htmlFor="price">
               Rango De Precio De: - A:
             </label>
-            <Select
-              onChange={handleSelectChange}
-              style={styles.select}
-              id="pinicial"
-              name="pinicial"
-              options={pinicial}
-            />
-            <Select
-              onChange={handleSelectChange}
-              style={styles.select}
-              id="pfinal"
-              name="pfinal"
-              options={pfinal}
-            />
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: isLarge ? 'row' : 'column',
+                width: isLarge ? '84%' : '100%',
+                justifyContent: isLarge ? 'space-between' : 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Select
+                onChange={handleSelectChange}
+                style={styles.crossSelect}
+                id="pinicial"
+                name="pinicial"
+                options={pinicial}
+              />
+              <Select
+                onChange={handleSelectChange}
+                style={styles.crossSelect}
+                id="pfinal"
+                name="pfinal"
+                options={pfinal}
+              />
+            </div>
           </div>
           <div style={styles.inputContainer}>
             <label style={styles.label} htmlFor="rooms">

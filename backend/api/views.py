@@ -210,6 +210,7 @@ def houseList(request):
 class houseListCustom(APIView):
     
     def get(self,request,*args,**kwargs):
+        print('*******************************************************************+')
         queryset=House.objects.all()
         
         ciud=City.objects.all()
@@ -223,7 +224,6 @@ class houseListCustom(APIView):
         vendida=self.request.query_params.get('vendida',None)
         
         cpcs=self.request.query_params.get('cpcs',None)
-
         if cpcs:
             ciud=ciud.filter(Description__icontains=cpcs)
             if not ciud:
@@ -251,7 +251,6 @@ class houseListCustom(APIView):
             queryset=queryset.filter(Price__lte=pfinal)
             
         if vendida:
-            print(vendida)
             if vendida=='1':
                 queryset=queryset.filter(is_sold=True)
             else:
@@ -294,8 +293,7 @@ def houseByState(request,pk):
 @authentication_classes([TokenAuthentication])
 @permission_classes([IsAuthenticated])
 def houseCreate(request):
-    serializer=houseSerializer(data=request.data)
-    
+    serializer=postHouseSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
 
@@ -307,7 +305,7 @@ def houseCreate(request):
 @permission_classes([IsAuthenticated])
 def houseUpdate(request,pk):
     houses=House.objects.get(id=pk)
-    serializar=houseSerializer(instance=houses,data=request.data)
+    serializar=postHouseSerializer(instance=houses,data=request.data)
     
     if serializar.is_valid():
         serializar.save()
@@ -437,8 +435,8 @@ def casa_info_pdf(request,pk):
     estados=State.objects.all()
     ciudades=City.objects.all()
     
-    cityact=list(ciudades.values_list().filter(id=listHouse[0][7]))
-    estadoact=list(estados.values_list().filter(id=listHouse[0][8]))
+    cityact=list(ciudades.values_list().filter(id=listHouse[0][6]))
+    estadoact=list(estados.values_list().filter(id=listHouse[0][7]))
     
     estado=estadoact[0][1]
     ciudad=cityact[0][1]
@@ -468,7 +466,7 @@ def casa_info_pdf(request,pk):
     c.setFont("Helvetica",16)
     c.drawCentredString(300,400,"Ubicacion: ")
     c.setFont("Helvetica",16)
-    c.drawCentredString(300,420,str(listHouse[0][11]))
+    c.drawCentredString(300,420,str(listHouse[0][10]))
     
     c.setFont("Helvetica",16)
     c.drawCentredString(150,470,"Estado: ")

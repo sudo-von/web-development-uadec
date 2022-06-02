@@ -27,6 +27,7 @@ import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
 import Isste from 'src/screens/Isste/Isste';
 import Foreign from 'src/screens/Foreing/Foreing';
 import Insurance from 'src/screens/Insurance/Insurance';
+import UpdateHouse from 'src/screens/UpdateHouse/UpdateHouse';
 
 const routes: RouteProps[] = [
   {
@@ -136,6 +137,10 @@ const routes: RouteProps[] = [
   {
     path: '/update-state/:id',
     element: <UpdateState />,
+  },
+  {
+    path: '/update-house/:id',
+    element: <UpdateHouse />,
   },
   {
     path: '*',

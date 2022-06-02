@@ -13,7 +13,13 @@ const handleStyles = (isLarge: boolean) =>
       alignItems: 'center',
     },
     select: {
-      width: 192,
+      marginTop: 2,
+      width: isLarge ? 192 : 330,
+      height: 21,
+    },
+    crossSelect: {
+      marginTop: 2,
+      width: isLarge ? 86 : 330,
       height: 21,
     },
     searchImage: {
@@ -42,8 +48,17 @@ const handleStyles = (isLarge: boolean) =>
       justifyContent: 'center',
       alignItems: 'center',
     },
+    crossInputContainer: {
+      width: '100%',
+      marginTop: 11,
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
     input: {
-      width: isLarge ? 186 : '90%',
+      marginTop: 2,
+      width: isLarge ? 186 : 320,
     },
     button: {
       marginTop: 25,

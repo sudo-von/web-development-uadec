@@ -30,12 +30,14 @@ class citySerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class houseSerializer(serializers.ModelSerializer):
-    ciudad_name=citySerializer()
-    estado_name=stateSerializer()
     class Meta:
         model=House
-        fields = ('Description','CP','Price','Rooms','Baths','ciudad_name','estado_name','is_sold','house_image','location')
-        
+        fields = '__all__'
+
+class postHouseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=House
+        fields = '__all__'
 class registrySerializer(serializers.ModelSerializer):
     class Meta:
         model=Counter
