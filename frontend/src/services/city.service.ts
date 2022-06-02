@@ -45,7 +45,7 @@ const postCity = async (cityPayload: CityPayload): Promise<void> => {
 };
 
 const updateCity = async (cityPayload: UpdateCityPayload): Promise<void> => {
-  await client.post<UpdateCityPayload>(
+  await client.patch<UpdateCityPayload>(
     `/api/city-update/${cityPayload.id}/`,
     cityPayload,
   );

@@ -66,12 +66,20 @@ const useCity = () => {
   const handleCityById = async (cityId: string) => {
     try {
       const cityResult = await getCityByID(cityId);
-      console.log(cityResult);
       const stateResult = await getStateByID(cityResult.IdState);
       setCity(cityResult);
       setState(stateResult);
     } catch (error) {
-      swal('', 'Ha ocurrido un error al cargar las ciudades', 'error');
+      swal('', 'Ha ocurrido un error al cargar la  ciudad', 'error');
+    }
+  };
+
+  const handleStateById = async (stateId: string) => {
+    try {
+      const result = await getStateByID(stateId);
+      setState(result);
+    } catch (error) {
+      swal('', 'Ha ocurrido un error al cargar el estado', 'error');
     }
   };
 
@@ -97,6 +105,7 @@ const useCity = () => {
     state,
     setState,
     handleCityById,
+    handleStateById,
   };
 };
 

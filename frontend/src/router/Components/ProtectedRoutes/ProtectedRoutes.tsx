@@ -18,6 +18,7 @@ import CreateState from 'src/screens/CreateState/CreateState';
 import CreateCity from 'src/screens/CreateCity/CreateCity';
 import States from 'src/screens/States/States';
 import Cities from 'src/screens/Cities/Cities';
+import UpdateState from 'src/screens/UpdateState/UpdateState';
 
 const routes: RouteProps[] = [
   {
@@ -123,6 +124,10 @@ const routes: RouteProps[] = [
   {
     path: '/update-city/:id',
     element: <UpdateCity />,
+  },
+  {
+    path: '/update-state/:id',
+    element: <UpdateState />,
   },
   {
     path: '*',

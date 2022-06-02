@@ -6,19 +6,23 @@ import Input from 'src/components/Input/Input';
 import Skeleton from 'src/components/Skeleton/Skeleton';
 import useCity from 'src/hooks/useCity';
 import useMediaQuery from 'src/hooks/useMediaQuery';
-import { City, updateCity, UpdateCityPayload } from 'src/services/city.service';
+import {
+  State,
+  updateState,
+  UpdateStatePayload,
+} from 'src/services/state.service';
 import swal from 'sweetalert';
-import handleStyles from './UpdateCity.styles';
+import handleStyles from './UpdateState.styles';
 
-const CreateCity = (): JSX.Element => {
+const UpdateState = (): JSX.Element => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
   const { id } = useParams();
-  const { city, setCity, state, handleCityById } = useCity();
+  const { setState, state, handleStateById } = useCity();
 
   useEffect(() => {
     if (id) {
-      handleCityById(id);
+      handleStateById(id);
     } else {
       console.log('sin id');
     }
@@ -26,25 +30,24 @@ const CreateCity = (): JSX.Element => {
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (e.target.name === 'description') {
-      if (city) {
-        const result: City = { ...city, Description: e.target.value };
-        setCity(result);
+      if (state) {
+        const result: State = { ...state, Description: e.target.value };
+        setState(result);
       }
     }
   };
 
   const handleSubmit = async (): Promise<void> => {
-    if (!city || !city.Description) {
+    if (!state || !state.Description) {
       swal('Ingresa todos los campos para poder continuar');
     } else {
       try {
-        const cityPayload: UpdateCityPayload = {
-          id: city.id,
-          IdState: state?.id ?? '',
-          Description: city.Description,
+        const statePayload: UpdateStatePayload = {
+          id: state.id,
+          Description: state.Description,
         };
-        await updateCity(cityPayload);
-        swal('Has actualizado la ciudad con éxito');
+        await updateState(statePayload);
+        swal('Has actualizado el estado con éxito');
       } catch (error) {
         swal('Ha ocurrido un error', 'Contacta al administrador', 'error');
       }
@@ -59,31 +62,21 @@ const CreateCity = (): JSX.Element => {
         alignItems="center"
         style={styles.container}
       >
-        <h1 style={styles.title}>Actualiza una ciudad</h1>
+        <h1 style={styles.title}>Actualiza un estado</h1>
         <form action="POST">
           <div style={styles.inputContainer}>
-            <p style={styles.label}>Estado al que pertenece la ciudad</p>
-            <Input
-              disabled={true}
-              id="state"
-              name="idState"
-              style={styles.input}
-              value={state?.Description}
-            />
-          </div>
-          <div style={styles.inputContainer}>
-            <p style={styles.label}>Ciudad</p>
+            <p style={styles.label}>Estado</p>
             <Input
               id="description"
               name="description"
               style={styles.input}
-              value={city?.Description}
-              placeholder="Ingresa la ciudad"
+              value={state?.Description}
+              placeholder="Ingresa el estado"
               onChange={handleChange}
             />
           </div>
           <Container justifyContent="center" style={styles.buttonContainer}>
-            <Button onClick={handleSubmit}>Actualizar ciudad</Button>
+            <Button onClick={handleSubmit}>Actualizar estado</Button>
           </Container>
         </form>
       </Container>
@@ -91,4 +84,4 @@ const CreateCity = (): JSX.Element => {
   );
 };
 
-export default CreateCity;
+export default UpdateState;

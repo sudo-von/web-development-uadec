@@ -59,7 +59,6 @@ const Cities = (): JSX.Element => {
           pagination
           columns={columns}
           data={allCities}
-          selectableRows
         />
       </Container>
     </Skeleton>
