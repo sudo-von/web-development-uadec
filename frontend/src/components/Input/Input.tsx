@@ -10,6 +10,7 @@ interface InputProps {
   name?: string;
   accept?: string;
   inputRef?: React.RefObject<HTMLInputElement>;
+  disabled?: boolean;
 }
 
 const Input = ({
@@ -22,6 +23,7 @@ const Input = ({
   name,
   accept,
   inputRef,
+  disabled,
 }: InputProps) => {
   return (
     <input
@@ -30,6 +32,7 @@ const Input = ({
       name={name}
       type={type}
       accept={accept}
+      disabled={disabled}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
