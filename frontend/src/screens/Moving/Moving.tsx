@@ -27,28 +27,20 @@ const Moving = () => {
           nuestras unidades y el personal de la empresa. Permítenos ayudarte y
           cuidar lo que sabemos que es importante para ti!
         </p>
-        <table>
-          <tr>
-            <td>
-              <h3 style={styles.title}>Todos nuestros servicios incluyen</h3>
-              <ol style={styles.text}>
-                <li>Incluye 3 cargadores </li>
-                <li>Herramienta para maniobras</li>
-                <li>Maniobras de carga y descarga</li>
-                <li>Ten a la mano los documentos y objetos importantes</li>
-                <li>Rampa y bandas para maniobra</li>
-              </ol>
-            </td>
-            <td>
-              <Image
-                src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_514,h_289/https://www.mudanzascartagena.com.co/wp-content/uploads/camion-encabezado-compressed.jpg"
-                alt="Mission"
-                height={250}
-                width={250}
-              />
-            </td>
-          </tr>
-        </table>
+        <h3 style={styles.title}>Todos nuestros servicios incluyen</h3>
+        <ol style={styles.text}>
+          <li>Incluye 3 cargadores </li>
+          <li>Herramienta para maniobras</li>
+          <li>Maniobras de carga y descarga</li>
+          <li>Ten a la mano los documentos y objetos importantes</li>
+          <li>Rampa y bandas para maniobra</li>
+        </ol>
+        <Image
+          src="https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img,w_514,h_289/https://www.mudanzascartagena.com.co/wp-content/uploads/camion-encabezado-compressed.jpg"
+          alt="Mission"
+          height={250}
+          width={250}
+        />
       </Container>
     </Skeleton>
   );
