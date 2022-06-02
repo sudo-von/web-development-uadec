@@ -23,43 +23,33 @@ const Iso = () => {
           desde el año 2002 en un referente de la calidad a nivel mundial con
           más de Un millón de empresas certificadas.
         </p>
-        <table>
-          <tr>
-            <td>
-              <h3 style={styles.text}>Contamos:</h3>
-              <p style={styles.paragraph}>
-                En el sector inmobiliario, la empresa Creativa, Constructora e
-                Inmobiliaria, es la primera en conseguir dicha certificación, lo
-                que garantiza que sus clientes tendrán una edificación con los
-                mejores materiales, talento humano calificado y un servicio de
-                producción, venta y posventa con un enfoque de mejora continua.
-              </p>
-              <p style={styles.paragraph}>
-                Al ser la primera organización en obtener la certificación ISO
-                9001 2012 es un motivo de orgullo para seguir construyendo las
-                edificaciones bien ubicadas, resistentes a los desastres
-                naturales y con bellos acabados, que brindan confort y seguridad
-                en el futuro de los habitantes de la casa que se realizan en
-                diferentes distritos.
-              </p>
-              <p style={styles.paragraph}>
-                Con la norma ISO 9001 2012 se asegura que los proyectos han sido
-                elaborados por profesionales de primera línea y son sometidos a
-                una revisión exhaustiva por los entes jurisdiccionales, como los
-                municipios, colegio de arquitectos y de ingenieros, que lo
-                avalan.
-              </p>
-            </td>
-            <td>
-              <Image
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHcRyn46VHEngL-5VZbwHwhZp8Ev5w8niaVShaulMAYrh6Wkoa8YW88qdD5Aa0oJlT1k4&usqp=CAU"
-                alt="Mission"
-                height={250}
-                width={250}
-              />
-            </td>
-          </tr>
-        </table>
+        <h3 style={styles.text}>Contamos:</h3>
+        <p style={styles.paragraph}>
+          En el sector inmobiliario, la empresa Creativa, Constructora e
+          Inmobiliaria, es la primera en conseguir dicha certificación, lo que
+          que garantiza que sus clientes tendrán una edificación con los
+          materiales, talento humano calificado y un servicio de producción,
+          venta y posventa con un enfoque de mejora continua.
+        </p>
+        <p style={styles.paragraph}>
+          Al ser la primera organización en obtener la certificación ISO 9001
+          2012 es un motivo de orgullo para seguir construyendo las
+          edificaciones bien ubicadas, resistentes a los desastres naturales y
+          con bellos acabados, que brindan confort y seguridad en el futuro de
+          los habitantes de la casa que se realizan en diferentes distritos.
+        </p>
+        <p style={styles.paragraph}>
+          Con la norma ISO 9001 2012 se asegura que los proyectos han sido
+          elaborados por profesionales de primera línea y son sometidos a una
+          revisión exhaustiva por los entes jurisdiccionales, como los
+          municipios, colegio de arquitectos y de ingenieros, que lo avalan.
+        </p>
+        <Image
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHcRyn46VHEngL-5VZbwHwhZp8Ev5w8niaVShaulMAYrh6Wkoa8YW88qdD5Aa0oJlT1k4&usqp=CAU"
+          alt="Mission"
+          height={250}
+          width={250}
+        />
       </Container>
     </Skeleton>
   );
