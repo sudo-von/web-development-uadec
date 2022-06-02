@@ -18,6 +18,7 @@ import Build from 'src/screens/Build/Build';
 import EchoHouses from 'src/screens/EchoHouses/EchoHouses';
 import Isste from 'src/screens/Isste/Isste';
 import Foreign from 'src/screens/Foreing/Foreing';
+import Houses from 'src/screens/Houses/Houses';
 import Insurance from 'src/screens/Insurance/Insurance';
 
 const routes: RouteProps[] = [
@@ -43,7 +44,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/search',
-    element: <Home />,
+    element: <Houses />,
   },
   {
     path: '/admin',

@@ -6,7 +6,7 @@ import Select, { Option } from 'src/components/Select/Select';
 import Skeleton from 'src/components/Skeleton/Skeleton';
 import useCity from 'src/hooks/useCity';
 import useMediaQuery from 'src/hooks/useMediaQuery';
-import postHouse, { HousePayload } from 'src/services/house.service';
+import { postHouse, HousePayload } from 'src/services/house.service';
 import swal from 'sweetalert';
 import handleStyles from './CreateHouse.styles';
 
