@@ -19,6 +19,7 @@ import CreateCity from 'src/screens/CreateCity/CreateCity';
 import States from 'src/screens/States/States';
 import Cities from 'src/screens/Cities/Cities';
 import UpdateState from 'src/screens/UpdateState/UpdateState';
+import Houses from 'src/screens/Houses/Houses';
 
 const routes: RouteProps[] = [
   {
@@ -43,7 +44,7 @@ const routes: RouteProps[] = [
   },
   {
     path: '/search',
-    element: <Home />,
+    element: <Houses />,
   },
   {
     path: '/buy',

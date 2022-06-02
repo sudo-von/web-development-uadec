@@ -1,5 +1,19 @@
 import client from 'src/helpers/private-axios-helper';
+import publicClient from 'src/helpers/public-axios-helper';
 
+export interface House {
+  Description: string;
+  CP: string;
+  Price: string;
+  Rooms: string;
+  Baths: string;
+  IdCity: string;
+  IdModel: string;
+  IdState: string;
+  is_sold: boolean;
+  house_image: File | null;
+  location: string;
+}
 export interface HousePayload {
   Description: string;
   CP: string;
@@ -42,4 +56,9 @@ const postHouse = async ({
   });
 };
 
-export default postHouse;
+const getHouses = async (): Promise<House[]> => {
+  const request = await publicClient.get<House[]>('/api/house-list');
+  return request.data;
+};
+
+export { getHouses, postHouse };
