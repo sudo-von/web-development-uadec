@@ -1,15 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import DataTable, { TableColumn } from 'react-data-table-component';
-import Container from 'src/components/Container/Container';
+import {
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Chip,
+  Grid,
+} from '@mui/material';
+import { useEffect, useState } from 'react';
 import Skeleton from 'src/components/Skeleton/Skeleton';
-import useMediaQuery from 'src/hooks/useMediaQuery';
-import { getHouses, House } from 'src/services/house.service';
+import {
+  getHouseReportByID,
+  getHouses,
+  House,
+} from 'src/services/house.service';
 import swal from 'sweetalert';
-import handleStyles from './Houses.styles';
+import { MapContainer, Marker, TileLayer } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 const Houses = (): JSX.Element => {
-  const isLarge = useMediaQuery('(min-width: 1100px)');
-  const styles = handleStyles(isLarge);
   const [houses, setHouses] = useState<House[]>([]);
   useEffect(() => {
     (async () => {
@@ -22,72 +31,100 @@ const Houses = (): JSX.Element => {
     })();
   }, []);
 
-  const columns: TableColumn<House>[] = [
-    {
-      name: 'Descripción',
-      selector: (row) => row.Description,
-      sortable: true,
-    },
-    {
-      name: 'Código postal',
-      selector: (row) => row.CP,
-      sortable: true,
-    },
-    {
-      name: 'Precio',
-      selector: (row) => row.Price,
-      sortable: true,
-    },
-    {
-      name: 'Número de cuartos',
-      selector: (row) => row.Rooms,
-      sortable: true,
-    },
-    {
-      name: 'Número de baños',
-      selector: (row) => row.Baths,
-      sortable: true,
-    },
-    {
-      name: 'IdModel',
-      selector: (row) => row.IdModel,
-      sortable: true,
-    },
-    {
-      name: 'IdState',
-      selector: (row) => row.IdState,
-      sortable: true,
-    },
-    {
-      name: 'Vendido',
-      selector: (row) => (row.is_sold ? 'Vendido' : 'Disponible'),
-      sortable: true,
-    },
-    {
-      name: 'Casa',
-      selector: (row) => (row.house_image ? row.house_image.name : 's'),
-    },
-    {
-      name: 'Localización',
-      selector: (row) => row.location,
-    },
-  ];
+  const numberWithCommas = (x: number) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
 
   return (
     <Skeleton>
-      <Container
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        style={styles.container}
-      >
-        <DataTable
-          title="Ciudades"
-          pagination
-          columns={columns}
-          data={houses}
-        />
-      </Container>
+      <Grid container spacing={2} style={{ padding: 20 }}>
+        {houses.map((house) => (
+          <Grid item xs={12} sm={6} md={4}>
+            <Card>
+              <CardMedia
+                component="img"
+                height="140"
+                image={`http://localhost:5000${house.house_image}`}
+                alt="green iguana"
+              />
+              <CardContent>
+                <Grid container justifyContent="flex-end">
+                  <Chip
+                    label={house.is_sold ? 'Vendida' : 'Disponible'}
+                    style={
+                      house.is_sold
+                        ? {
+                            fontSize: 10,
+                            fontWeight: 'bold',
+                            background: 'red',
+                            color: 'white',
+                          }
+                        : {
+                            fontSize: 10,
+                            fontWeight: 'bold',
+                            background: 'green',
+                            color: 'white',
+                          }
+                    }
+                    variant="outlined"
+                  />
+                </Grid>
+                <p>
+                  <span style={{ fontWeight: 'bold' }}>Precio: </span>$
+                  {numberWithCommas(parseFloat(house.Price))} por mes.
+                </p>
+                <p>
+                  <span style={{ fontWeight: 'bold' }}>Descripción: </span>
+                  La casa cuenta con {house.Rooms} cuartos y {house.Baths}{' '}
+                  baños. {house.Description}
+                </p>
+                <p>
+                  <span style={{ fontWeight: 'bold' }}>Ubicación: </span>
+                  La casa cuenta con {house.Rooms} cuartos y {house.Baths}{' '}
+                  baños.
+                </p>
+                <p>
+                  <span style={{ fontWeight: 'bold' }}>Estado: </span>
+                  {house.IdState}
+                </p>
+                <p>
+                  <span style={{ fontWeight: 'bold' }}>Ciudad: </span>
+                  {house.IdCity}
+                </p>
+                <p>
+                  <span style={{ fontWeight: 'bold' }}>Código postal: </span>
+                  {house.CP}
+                </p>
+                <MapContainer
+                  center={[
+                    parseFloat(house.location.split(',')[0]),
+                    parseFloat(house.location.split(',')[1]),
+                  ]}
+                  zoom={13}
+                  scrollWheelZoom={false}
+                >
+                  <TileLayer
+                    attribution="Ubicación de la casa"
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker
+                    position={[
+                      parseFloat(house.location.split(',')[0]),
+                      parseFloat(house.location.split(',')[1]),
+                    ]}
+                  />
+                </MapContainer>
+              </CardContent>
+              <CardActions>
+                <PictureAsPdfIcon
+                  style={{ color: 'red' }}
+                  onClick={() => getHouseReportByID(house.id)}
+                />
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
     </Skeleton>
   );
 };
