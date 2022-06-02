@@ -23,24 +23,15 @@ const Sale = () => {
           comprar, rentar o vender propiedades. Contamos con departamentos,
           oficinas , terrenos y otros inmuebles en venta y renta.
         </p>
-        <table>
-          <tr>
-            <td>
-              <h3 style={styles.text}>
-                Bienes Raices Multicasa se encuentra en toda la República
-                Méxicana
-              </h3>
-            </td>
-            <td>
-              <Image
-                src="https://lahaus.imgix.net/uploads/real_estate_attachment/picture/6214167/aria_departamentos_en_venta_en_centro_de_monterrey_de_1_3_hab_cover_c00bc0d6490933f2d8f2.jpg?auto=compress%2Cenhance%2Cformat&q=40&w=auto&h=700&fit=clip&crop=edges"
-                alt="Mission"
-                height={250}
-                width={250}
-              />
-            </td>
-          </tr>
-        </table>
+        <h3 style={styles.text}>
+          Bienes Raices Multicasa se encuentra en toda la República Méxicana
+        </h3>
+        <Image
+          src="https://lahaus.imgix.net/uploads/real_estate_attachment/picture/6214167/aria_departamentos_en_venta_en_centro_de_monterrey_de_1_3_hab_cover_c00bc0d6490933f2d8f2.jpg?auto=compress%2Cenhance%2Cformat&q=40&w=auto&h=700&fit=clip&crop=edges"
+          alt="Mission"
+          height={250}
+          width={450}
+        />
       </Container>
     </Skeleton>
   );
