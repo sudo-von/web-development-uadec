@@ -1,4 +1,5 @@
 import { ChangeEvent, useRef, useState } from 'react';
+import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import Button from 'src/components/Button/Button';
 import Container from 'src/components/Container/Container';
 import Input from 'src/components/Input/Input';
@@ -10,16 +11,30 @@ import { postHouse, HousePayload } from 'src/services/house.service';
 import swal from 'sweetalert';
 import handleStyles from './CreateHouse.styles';
 
+interface DraggerProps {
+  setLocation: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Dragger = ({ setLocation }: DraggerProps) => {
+  useMapEvents({
+    dragend: (e) => {
+      const coord = e.target.getCenter();
+      setLocation(`${coord.lat},${coord.lng}`);
+    },
+  });
+  return null;
+};
+
 const CreateHouse = (): JSX.Element => {
   const isLarge = useMediaQuery('(min-width: 1100px)');
   const styles = handleStyles(isLarge);
-  const [description, setDescription] = useState('abc');
-  const [cp, setCP] = useState('1234');
-  const [price, setPrice] = useState('123');
-  const [rooms, setRooms] = useState('12345');
-  const [baths, setBaths] = useState('2');
+  const [description, setDescription] = useState('');
+  const [cp, setCP] = useState('');
+  const [price, setPrice] = useState('');
+  const [rooms, setRooms] = useState('');
+  const [baths, setBaths] = useState('');
   const [houseImage, setHouseImage] = useState<File>();
-  const [location, setLocation] = useState('12345678');
+  const [location, setLocation] = useState('');
   const [idState, setIdState] = useState('');
   const [idCity, setIdCity] = useState('');
   const ref = useRef<HTMLInputElement>(null);
@@ -224,17 +239,31 @@ const CreateHouse = (): JSX.Element => {
             />
           </div>
           <div style={styles.inputContainer}>
-            <p style={styles.label}>Coordenadas</p>
+            <p style={styles.label}>Selecciona las coordenadas del mapa</p>
             <Input
               id="location"
               name="location"
               style={styles.input}
               type="text"
               value={location}
-              placeholder="Ingresa las coordenadas"
+              placeholder="Haz click en el mapa"
               onChange={handleChange}
+              disabled={true}
             />
           </div>
+          <MapContainer
+            center={[25.4267, -100.99]}
+            zoom={13}
+            scrollWheelZoom={false}
+            style={{ height: 350 }}
+          >
+            <TileLayer
+              attribution="Ubicación de la casa"
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[25.4267, -100.99]} />
+            <Dragger setLocation={setLocation} />
+          </MapContainer>
           <Container justifyContent="center" style={styles.buttonContainer}>
             <Button onClick={handleSubmit}>Registrar casa</Button>
           </Container>
