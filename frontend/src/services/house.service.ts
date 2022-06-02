@@ -1,7 +1,8 @@
 import client from 'src/helpers/private-axios-helper';
 import publicClient from 'src/helpers/public-axios-helper';
-
+const FileDownload = require('js-file-download');
 export interface House {
+  id: string;
   Description: string;
   CP: string;
   Price: string;
@@ -61,4 +62,11 @@ const getHouses = async (): Promise<House[]> => {
   return request.data;
 };
 
-export { getHouses, postHouse };
+const getHouseReportByID = async (houseId: string): Promise<void> => {
+  const request = await publicClient.get(
+    `/api/house-detail-report/${houseId}/`,
+  );
+  FileDownload(request.data, 'report.pdf');
+};
+
+export { getHouses, postHouse, getHouseReportByID };

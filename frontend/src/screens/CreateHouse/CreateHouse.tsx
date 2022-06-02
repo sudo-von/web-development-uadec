@@ -10,7 +10,6 @@ import useMediaQuery from 'src/hooks/useMediaQuery';
 import { postHouse, HousePayload } from 'src/services/house.service';
 import swal from 'sweetalert';
 import handleStyles from './CreateHouse.styles';
-
 interface DraggerProps {
   setLocation: React.Dispatch<React.SetStateAction<string>>;
 }

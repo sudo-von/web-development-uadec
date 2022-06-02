@@ -1,5 +1,4 @@
 import {
-  Button,
   Card,
   CardActions,
   CardContent,
@@ -9,10 +8,15 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Skeleton from 'src/components/Skeleton/Skeleton';
-import { getHouses, House } from 'src/services/house.service';
+import {
+  getHouseReportByID,
+  getHouses,
+  House,
+} from 'src/services/house.service';
 import swal from 'sweetalert';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
 const Houses = (): JSX.Element => {
   const [houses, setHouses] = useState<House[]>([]);
@@ -112,7 +116,10 @@ const Houses = (): JSX.Element => {
                 </MapContainer>
               </CardContent>
               <CardActions>
-                <Button size="small">Learn More</Button>
+                <PictureAsPdfIcon
+                  style={{ color: 'red' }}
+                  onClick={() => getHouseReportByID(house.id)}
+                />
               </CardActions>
             </Card>
           </Grid>
