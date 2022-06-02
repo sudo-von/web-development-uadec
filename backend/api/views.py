@@ -286,7 +286,7 @@ def houseCreate(request):
     
     if serializer.is_valid():
         serializer.save()
-    serializer.save()
+
     return Response(serializer.data)
 
 #///////////////UPDATE  HOUSE INFORMATION////////////////////
@@ -344,10 +344,35 @@ def registryCreate(request):
 def casas_pdf(request):
     buf=io.BytesIO()
     casas=House.objects.all()
+    estados=State.objects.all()
+    ciudades=City.objects.all()
     listaCasas=list(casas.values_list("Description","Price","Rooms","Baths","IdState","IdCity","CP","is_sold"))
     c=canvas.Canvas(buf,pagesize=letter, bottomup=0) #SE DA FORMATO DE HOJA (TIPO CARTA, ETC)
 
+    listaFinal=[]
+
+    for casa in listaCasas:
+        arre=[]
+        arre.append(casa[0])
+        arre.append(casa[1])
+        arre.append(casa[2])
+        arre.append(casa[3])
+        
+        estadoact=list(estados.values_list().filter(id=casa[4]))
+        cityact=list(ciudades.values_list().filter(id=casa[5]))
+        arre.append(estadoact[0][1])
+        arre.append(cityact[0][1])
+        
+        arre.append(casa[6])
+        
+        if casa[7]==False:
+            arre.append('No')
+        else:
+            arre.append('Si')
+            
+        listaFinal.append(arre)
     
+
     #////////FORMATO DE LETRA A TITULOS/////////////
     c.setFont("Helvetica",35)
     c.drawCentredString(280,50,"Multicasas: Reporte General")
@@ -357,9 +382,10 @@ def casas_pdf(request):
     #//////SE DEFINEN LOS ENCABEZADOS DE LAS COLUMNAS
     encabezados=('Descripcion','Precio','Cuartos','Baños','Estado','Ciudad','C.P.','Vendida')
     detalles=[['123456','matematicas','90','0'],['123456','quimica','80','0'],['123456','programacion 1','90','0']] #REEMPLAZAR ESTOS DATOS POR DATOS DEL MODELO DEL ESTUDIANTE
-    detalle_orden=Table(listaCasas+[encabezados],colWidths=[100,60,50,40,50,50,40,60,40]) # //// FORMATO A LAS COLUMNAS DEL REPORTE
+    detalle_orden=Table(listaFinal+[encabezados],colWidths=[100,60,50,40,50,50,40,60,40],rowHeights=30) # //// FORMATO A LAS COLUMNAS DEL REPORTE
     detalle_orden.setStyle(TableStyle([
-        ('ALIGN',(0,0),(0,0),'CENTER'),
+        ('ALIGN',(0,-1),(-1,-1),'CENTER'),
+        ('VALIGN',(0,-1),(-1,-1),'MIDDLE'),
         ('GRID',(0,0),(-1,-1),1,colors.black),
         ('FONTSIZE',(0,0),(-1,-1),9),
     ]))
@@ -378,3 +404,83 @@ def casas_pdf(request):
     buf.seek(0)
     
     return FileResponse(buf,as_attachment=True,filename='listadoGeneral.pdf') #////////SE IMPRIME EL REPORTE AL LLAMAR A LA VIST
+
+
+#///////////////////////REPORTE LISTADO PARTICULAR DE CASAS/////////////////////////////
+@api_view(['GET'])
+def casa_info_pdf(request,pk):
+    buf=io.BytesIO()
+    house=House.objects.all().filter(id=pk)
+    listHouse=list(house.values_list())
+    c=canvas.Canvas(buf,pagesize=letter, bottomup=0)
+    
+    estado=''
+    ciudad=''
+    modelo=''
+    
+    estados=State.objects.all()
+    ciudades=City.objects.all()
+    modelos=Model.objects.all()
+    
+    modeloact=list(modelos.values_list().filter(id=listHouse[0][6]))
+    cityact=list(ciudades.values_list().filter(id=listHouse[0][7]))
+    estadoact=list(estados.values_list().filter(id=listHouse[0][8]))
+    
+    estado=estadoact[0][1]
+    ciudad=cityact[0][1]
+    modelo=modeloact[0][1]
+    
+    print(modelo)
+    
+    #////////FORMATO DE LETRA A TITULOS/////////////
+    c.setFont("Helvetica",20)
+    c.drawCentredString(300,60,"Datos De la Casa")
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(300,150,"Descripcion: ")
+    c.setFont("Helvetica",16)
+    c.drawCentredString(300,170,str(listHouse[0][1]))
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(100,250,"Modelo: ")
+    c.setFont("Helvetica",14)
+    c.drawCentredString(100,270,str(modelo))
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(100,300,"Habitaciones: ")
+    c.setFont("Helvetica",14)
+    c.drawCentredString(100,320,str(listHouse[0][4]))
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(100,350,"Baños: ")
+    c.setFont("Helvetica",14)
+    c.drawCentredString(100,370,str(listHouse[0][5]))
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(300,400,"Ubicacion: ")
+    c.setFont("Helvetica",16)
+    c.drawCentredString(300,420,str(listHouse[0][11]))
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(100,450,"Estado: ")
+    c.setFont("Helvetica",14)
+    c.drawCentredString(100,470,str(estado))
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(100,500,"Ciudad: ")
+    c.setFont("Helvetica",14)
+    c.drawCentredString(100,520,str(ciudad))
+    
+    c.setFont("Helvetica",16)
+    c.drawCentredString(100,550,"Codigo Postal: ")
+    c.setFont("Helvetica",14)
+    c.drawCentredString(100,570,str(listHouse[0][2]))
+    
+    
+
+    
+    c.showPage()
+    c.save()
+    buf.seek(0)
+    
+    return FileResponse(buf,as_attachment=True,filename='detallesCasa.pdf')#////////SE IMPRIME EL REPORTE AL LLAMAR A LA VISTA
