@@ -1,4 +1,5 @@
 from datetime import datetime
+from itertools import count
 import json
 from django.shortcuts import render
 
@@ -265,6 +266,21 @@ def houseDetail(request,pk):
     houses=House.objects.get(id=pk)
     serializer=houseSerializer(houses,many=False)
     return Response(serializer.data)
+
+#///////////////////GET THE DATA OF THE SELECTED HOUSE ONLY////////////////////
+@api_view(['GET'])
+def houseCountSold(request,pk):
+    vendido=False
+    if pk=='1':
+        vendido=True
+    
+    houses=House.objects.all().filter(is_sold=vendido)
+    
+    listaVenta=list(houses.values_list())
+    print(listaVenta)
+    contar=len(listaVenta)
+    
+    return Response(contar)
 
 #///GET A LIST OF OBJECTS TYPE HOUSE BY MODEL IN A JSON //////////////////////////////
 @api_view(['GET'])
