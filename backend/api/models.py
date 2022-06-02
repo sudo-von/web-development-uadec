@@ -1,11 +1,9 @@
+from pickle import TRUE
 from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
 
-class Model(models.Model):
-    Description=models.CharField(max_length=250)
-    
 class Counter(models.Model):
     register=models.IntegerField()
     Description=models.CharField(max_length=250)
@@ -27,7 +25,6 @@ class House(models.Model):
     Price=models.FloatField()
     Rooms=models.IntegerField()
     Baths=models.IntegerField()
-    IdModel=models.ForeignKey(Model,on_delete=models.CASCADE)
     IdCity=models.ForeignKey(City,on_delete=models.CASCADE)
     IdState=models.ForeignKey(State,on_delete=models.CASCADE)
     is_sold=models.BooleanField(default=False)

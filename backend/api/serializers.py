@@ -2,11 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import *
 
-class modelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=Model
-        fields = '__all__'
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -35,6 +30,8 @@ class citySerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 class houseSerializer(serializers.ModelSerializer):
+    ciudad_name=citySerializer()
+    estado_name=stateSerializer()
     class Meta:
         model=House
         fields = '__all__'

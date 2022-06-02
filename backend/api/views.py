@@ -132,57 +132,6 @@ def stateDelete(request,pk):
     return Response("Registro eliminado")
 
 
-#////////////////////////////////////////////////API VIEWS FOR MODEL//////////////////////////////////////////////
-
-#///GET A LIST OF OBJECTS TYPE MODEL IN A JSON //////////////////////////////
-@api_view(['GET'])
-def modelList(request):
-    models=Model.objects.all()
-    serializer=modelSerializer(models,many=True)
-    return Response(serializer.data)
-
-#///////////////////GET THE DATA OF THE SELECTED MODEL ONLY////////////////////
-@api_view(['GET'])
-def modelDetail(request,pk):
-    models=Model.objects.get(id=pk)
-    serializer=modelSerializer(models,many=False)
-    return Response(serializer.data)
-
-#//////////////CREATE NEW MODEL/////////////////////////////////////////
-@api_view(['POST'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
-def modelCreate(request):
-    serializer=modelSerializer(data=request.data)
-    
-    if serializer.is_valid():
-        serializer.save()
-        
-    return Response(serializer.data)
-
-#///////////////UPDATE MODEL INFORMATION////////////////////
-@api_view(['PATCH'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
-def modelUpdate(request,pk):
-    models=Model.objects.get(id=pk)
-    serializar=modelSerializer(instance=models,data=request.data)
-    
-    if serializar.is_valid():
-        serializar.save()
-        
-    return Response(serializar.data)
-
-#/////////////DELETE A MODEL BY  ID/////////////////////////
-@api_view(['DELETE'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
-def modelDelete(request,pk):
-    models=Model.objects.get(id=pk)
-    models.delete()
-    
-    return Response("Registro eliminado")
-
 
 
 #////////////////////////////////////////////////API VIEWS FOR CITY//////////////////////////////////////////////
@@ -271,6 +220,8 @@ class houseListCustom(APIView):
         pinicial=self.request.query_params.get('pinicial',None)
         pfinal=self.request.query_params.get('pfinal',None)
         
+        vendida=self.request.query_params.get('vendida',None)
+        
         cpcs=self.request.query_params.get('cpcs',None)
 
         if cpcs:
@@ -298,6 +249,13 @@ class houseListCustom(APIView):
             
         if pfinal:
             queryset=queryset.filter(Price__lte=pfinal)
+            
+        if vendida:
+            print(vendida)
+            if vendida=='1':
+                queryset=queryset.filter(is_sold=True)
+            else:
+                queryset=queryset.filter(is_sold=False)
             
         serializer=houseSerializer(queryset,many=True)
         return Response(serializer.data)
@@ -478,16 +436,13 @@ def casa_info_pdf(request,pk):
     
     estados=State.objects.all()
     ciudades=City.objects.all()
-    modelos=Model.objects.all()
     
-    modeloact=list(modelos.values_list().filter(id=listHouse[0][6]))
     cityact=list(ciudades.values_list().filter(id=listHouse[0][7]))
     estadoact=list(estados.values_list().filter(id=listHouse[0][8]))
     
     estado=estadoact[0][1]
     ciudad=cityact[0][1]
-    modelo=modeloact[0][1]
-    
+
     print(modelo)
     
     #////////FORMATO DE LETRA A TITULOS/////////////
@@ -499,10 +454,6 @@ def casa_info_pdf(request,pk):
     c.setFont("Helvetica",16)
     c.drawCentredString(300,170,str(listHouse[0][1]))
     
-    c.setFont("Helvetica",16)
-    c.drawCentredString(150,250,"Modelo: ")
-    c.setFont("Helvetica",14)
-    c.drawCentredString(150,270,str(modelo))
     
     c.setFont("Helvetica",16)
     c.drawCentredString(300,250,"Habitaciones: ")
