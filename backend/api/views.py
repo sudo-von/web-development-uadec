@@ -556,8 +556,6 @@ def contactUpdate(request,pk):
 
 #/////////////DELETE A CONTACT BY IT ID/////////////////////////
 @api_view(['DELETE'])
-@authentication_classes([TokenAuthentication])
-@permission_classes([IsAuthenticated])
 def contactDelete(request,pk):
     contacts=Contact.objects.get(id=pk)
     contacts.delete()
